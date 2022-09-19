@@ -556,7 +556,7 @@ function Rdheirloomswap() {
 		if (getPageSetting('Rdhsmapstaff') != "undefined" && (Rdshouldtimefarm == false || getPageSetting('Rdhstributestaff') == "undefined") && game.global.mapsActive == true) {
 			Rhsmapstaffequip();
 		}
-		if (getPageSetting('Rdhstributestaff') != "undefined" && getPageSetting('Rdhsstaff') && Rdshouldtimefarm == true && game.global.mapsActive == true) {
+		if (getPageSetting('Rdhstributestaff') != "undefined" && getPageSetting('Rdhsstaff') && (Rshouldtributefarm == true || Rshouldshipfarm  == true) && game.global.mapsActive == true) {
 			Rhstributestaffequip();
 		}
 	}
