@@ -3039,6 +3039,7 @@ function RautoMap() {
             }
             if (Rshouldshipfarm && !Rshouldtimefarm && !Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest && !Rshouldequipfarm) {
                 var shipfragcheck = true;
+                document.getElementById("advSpecialSelect").value = "lsc";
                 if (getPageSetting('Rshipfarmfrag') == true) {
                     if (shipfrag() == true) {
                         shipfragcheck = true;
