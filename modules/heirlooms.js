@@ -540,7 +540,7 @@ function Rheirloomswap() {
 			case (getPageSetting('Rhstributestaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtributefarm == true || Rshouldshipfarm == true) && game.global.mapsActive == true):
 				Rhstributestaffequip();
 				break;
-			case (getPageSetting('Rhsmapstaff') != "undefined" && ((Rshouldshipfarm == false && Rshouldtributefarm == false) || getPageSetting('Rhstributestaff') == "undefined") && game.global.mapsActive == true):
+			case (getPageSetting('Rhsmapstaff') != "undefined" && game.global.mapsActive == true):
 				Rhsmapstaffequip();
 				break;
 			case (getPageSetting('Rhsworldstaff') != "undefined" && game.global.mapsActive == false):
