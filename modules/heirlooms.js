@@ -542,7 +542,7 @@ function Rheirloomswap() {
 		if (getPageSetting('Rhstributestaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtributefarm == true || Rshouldshipfarm == true) && game.global.mapsActive == true) {
 			Rhstributestaffequip();
 		}
-		if (getPageSetting('RhsScienceStaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtributefarm == true && game.global.challengeActive == "Archaeology") && game.global.mapsActive == true) {
+		if (getPageSetting('RhsScienceStaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtimefarm == true && game.global.challengeActive == "Archaeology") && game.global.mapsActive == true) {
 			EquipStaffByName('RhsScienceStaff');
 		}
 	}
