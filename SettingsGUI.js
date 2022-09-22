@@ -372,7 +372,7 @@ function initializeAllSettings() {
     createSetting('dbwraidcell', 'Daily BW Raiding Cell', 'What Cell to start BW Raiding at. Recommend above your P Raiding cell if used together. -1 to Raid at cell 1. ', 'value', -1, null, 'Daily');
     createSetting('dBWraidingz', 'Daily Z to BW Raid', 'Raids BWs at zone specified in dailys. Example: 495, will raid all BWs for all gear starting from 495. Will skip lower BWs if you have enough damage. Once all gear is obtained, will return to regular farming. Accepts comma separated lists, and raids up to the value in the corrsponding position in the Max BW to raid setting. So if this is set to 480,495 and Daily Max BW to Raid is set to 500,515 AT will BW raid up to 500 from 480, and 515 from 495. Make sure these lists are the same length or BW raiding may fail.', 'multiValue', [-1], null, 'Daily');
     createSetting('dBWraidingmax', 'Daily Max BW to raid', 'Raids BWs until zone specified in dailys. Example: 515, will raid all BWs for all gear until 515. Will skip lower BWs if you have enough damage. Once all gear is obtained, will return to regular farming. Now accepts comma separated lists - see description of Daily Z to BW raid setting for details.', 'multiValue', [-1], null, 'Daily');
-    
+
     //Shrine - U1 (Daily)
     document.getElementById('dBWraidingmax').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Hdshrine', ['Daily AutoShrine Off', 'Daily AutoShrine On', 'DAS: Normal'], 'Turn this on if you want to use Shrines automatically in Dailies. Use DAS: Normal if you want to use the settings in the Maps tab if do not wish to copy them here. ', 'multitoggle', 0, null, 'Daily');
@@ -420,21 +420,21 @@ function initializeAllSettings() {
     //RHeirloom
     document.getElementById('dlowdmg').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rdhs', ['DHS: Off', 'DHS: On', 'DHS: Normal'], 'Heirloom swapping master button for Dailies. Turn this on to allow heirloom swapping and its associated settings. Use DHS: Normal to use the non-daily settings. ', 'multitoggle', 0, null, 'Daily');
-    
+
     //DShield Swapping
     document.getElementById('Rdhs').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rdhsshield', 'Daily Shields', 'Toggle to swap Shields in Dailies', 'boolean', false, null, 'Daily');
     createSetting('Rdhsz', 'DHSh: Zone', 'Which zone to swap from your first heirloom you have defined to your second heirloom you have defined. I.e if this value is 75 it will switch to the second heirloom <b>on z75</b>', 'value', '-1', null, 'Daily');
     createSetting('Rdhs1', 'DHSh: First', '<b>First Heirloom to use</b><br><br>Enter the name of your first heirloom. This is the heirloom that you will use before swapping to the second heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Daily');
     createSetting('Rdhs2', 'DHSh: Second', '<b>Second Heirloom to use</b><br><br>Enter the name of your second heirloom. This is the heirloom that you will use after swapping from the first heirloom at the zone you have defined in the HS: Zone. ', 'textValue', 'undefined', null, 'Daily');
-    
+
     //DStaff Swapping
     document.getElementById('Rdhs2').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rdhsstaff', 'Daily Staffs', 'Toggle to swap Staffs', 'boolean', false, null, 'Daily');
     createSetting('Rdhsworldstaff', 'DHSt: World', '<b>World Staff</b><br><br>Enter the name of your world staff for Dailies.', 'textValue', 'undefined', null, 'Daily');
     createSetting('Rdhsmapstaff', 'DHSt: Map', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff for Dailies.', 'textValue', 'undefined', null, 'Daily');
     createSetting('Rdhstributestaff', 'DHSt: Tribute', '<b>Tribute farming staff</b><br><br>Enter the name of the staff you would like to equip during tribute farming for Dailies', 'textValue', 'undefined', null, 'Daily');
-    
+
     //Shrine - U2 (Daily)
     document.getElementById('Rdhstributestaff').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rdshrine', ['Daily AutoShrine Off', 'Daily AutoShrine On', 'DAS: Normal'], 'Turn this on if you want to use Shrines automatically in Dailies. Use DAS: Normal if you want to use the settings in the Maps tab if do not wish to copy them here. ', 'multitoggle', 0, null, 'Daily');
@@ -442,7 +442,7 @@ function initializeAllSettings() {
     createSetting('Rdshrinezone', 'AutoShrine: Zone', 'zone', 'multiValue', [-1], null, 'Daily');
     createSetting('Rdshrinecell', 'AutoShrine: Cell', 'cell', 'multiValue', [-1], null, 'Daily');
     createSetting('Rdshrineamount', 'AutoShrine: Amount', 'amount', 'multiValue', [-1], null, 'Daily');
-    
+
     //Portal Line
     document.getElementById('Rdshrineamount').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('AutoStartDaily', 'Auto Start Daily', 'Starts Dailies for you. When you portal with this on, it will select the oldest Daily and run it. Use the settings in this tab to decide whats next. ', 'boolean', false, null, 'Daily');
@@ -630,7 +630,7 @@ function initializeAllSettings() {
     createSetting('AMUstar', 'AMU: Imploding Star', 'Turn on to run this map every run. ', 'boolean', false, null, 'Maps');
     createSetting('automapsportal', 'AM Portal', 'Makes sure Auto Maps is on after portalling. Turn this off to disable this and remember your choice. ', 'boolean', true, null, 'Maps');
     document.getElementById('automapsportal').parentNode.insertAdjacentHTML('afterend', '<br>');
-    
+
     //Line 2
     createSetting('DynamicSiphonology', 'Dynamic Siphonology', 'Recommended Always ON. Use the right level of siphonology based on your damage output. IE: Only uses  siphonology if you are weak. With this OFF it means it ALWAYS uses the lowest siphonology map you can create. Siphonology is a perk you get at level 115-125ish, and means you receive map bonus stacks for running maps below your current zone - Up to 3 zones below (1 per perk level).', 'boolean', true, null, 'Maps');
     createSetting('PreferMetal', 'Prefer Metal Maps', 'Always prefer metal maps, intended for manual use, such as pre-spire farming. Remember to turn it back off after you\'re done farming!', 'boolean', false, null, 'Maps');
@@ -668,7 +668,7 @@ function initializeAllSettings() {
     createSetting('Hshrinecell', 'AutoShrine: Cell', 'cell', 'multiValue', [-1], null, 'Maps');
     createSetting('Hshrineamount', 'AutoShrine: Amount', 'amount', 'multiValue', [-1], null, 'Maps');
     createSetting('Hshrinecharge', 'AutoShrine: Charge', 'charge count you will never see this setting hehehehe', 'value', 0, null, 'Maps');
-  
+
     //RMaps
 
     //Line 1
@@ -713,7 +713,7 @@ function initializeAllSettings() {
     createSetting('Rtributemapselection', 'TrF: Map Selection', 'map', 'textValue', 'undefined', null, 'Maps');
     createSetting('Rtributespecialselection', 'TrF: Special Selection', 'special', 'textValue', 'undefined', null, 'Maps');
     createSetting('Rtributegatherselection', 'TrF: Gather Selection', 'gather', 'textValue', 'undefined', null, 'Maps');
-    
+
     //Shrine - U2
     document.getElementById('Rtributegatherselection').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rshrine', 'AutoShrine', 'Turn this on if you want to use Shrines automatically. ', 'boolean', false, null, 'Maps');
@@ -1001,6 +1001,7 @@ function initializeAllSettings() {
     createSetting('Rhsworldstaff', 'World', '<b>World Staff</b><br><br>Enter the name of your world staff.', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhsmapstaff', 'Map', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff.', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhstributestaff', 'Tribute', '<b>Tribute farming staff</b><br><br>Enter the name of the staff you would like to equip during tribute farming.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('RhsScienceStaff', 'Science', '<b>Science farming staff</b><br><br>Enter the name of the staff you would like to equip during science farming.', 'textValue', 'undefined', null, 'Heirlooms');
 
     //Heirloom Line
     document.getElementById('Rhstributestaff').parentNode.insertAdjacentHTML('afterend', '<br>');
@@ -1141,7 +1142,7 @@ function initializeAllSettings() {
     //SPAM
 
     //Line 1
-    
+
     createSetting('SpamGeneral', 'General Spam', 'General Spam = Notification Messages, Auto He/Hr', 'boolean', true, null, 'Display');
     createSetting('SpamUpgrades', 'Upgrades Spam', 'Upgrades Spam', 'boolean', true, null, 'Display');
     createSetting('SpamEquipment', 'Equipment Spam', 'Equipment Spam', 'boolean', true, null, 'Display');
@@ -1381,7 +1382,7 @@ function settingChanged(id) {
     if (btn.type == 'multitoggle') {
         if (id == 'AutoMagmiteSpender2' && btn.value == 1) {
             magmiteSpenderChanged = true;
-            setTimeout(function() {
+            setTimeout(function () {
                 magmiteSpenderChanged = false;
             }, 5000);
         }
@@ -1624,7 +1625,7 @@ function updateCustomButtons() {
     !radonon ? turnOn('ManualGather2') : turnOff("ManualGather2");
     !radonon ? turnOn('TrapTrimps') : turnOff("TrapTrimps");
     !radonon ? turnOn('BuyUpgradesNew') : turnOff("BuyUpgradesNew");
-    (!radonon && getPageSetting('ManualGather2') == 2 && bwRewardUnlocked("Foremany")) ? turnOn("gathermetal"): turnOff("gathermetal");
+    (!radonon && getPageSetting('ManualGather2') == 2 && bwRewardUnlocked("Foremany")) ? turnOn("gathermetal") : turnOff("gathermetal");
     !radonon ? turnOn("amalcoord") : turnOff("amalcoord");
     !radonon && getPageSetting('amalcoord') == true ? turnOn("amalcoordt") : turnOff("amalcoordt");
     !radonon && getPageSetting('amalcoord') == true ? turnOn("amalcoordhd") : turnOff("amalcoordhd");
@@ -1636,7 +1637,7 @@ function updateCustomButtons() {
 
     //Portal
     !radonon ? turnOn("AutoPortal") : turnOff("AutoPortal");
-    (!radonon && autoTrimpSettings.AutoPortal.selected == "Custom") ? turnOn("CustomAutoPortal"): turnOff("CustomAutoPortal");
+    (!radonon && autoTrimpSettings.AutoPortal.selected == "Custom") ? turnOn("CustomAutoPortal") : turnOff("CustomAutoPortal");
     var heHr = (autoTrimpSettings.AutoPortal.selected == "Helium Per Hour");
     !radonon && (heHr || autoTrimpSettings.AutoPortal.selected == "Custom") ? turnOn("HeliumHourChallenge") : turnOff("HeliumHourChallenge");
     !radonon && (heHr) ? turnOn("HeHrDontPortalBefore") : turnOff("HeHrDontPortalBefore");
@@ -1652,7 +1653,7 @@ function updateCustomButtons() {
 
     //RPortal
     radonon ? turnOn("RAutoPortal") : turnOff("RAutoPortal");
-    (radonon && autoTrimpSettings.RAutoPortal.selected == "Custom") ? turnOn("RCustomAutoPortal"): turnOff("RCustomAutoPortal");
+    (radonon && autoTrimpSettings.RAutoPortal.selected == "Custom") ? turnOn("RCustomAutoPortal") : turnOff("RCustomAutoPortal");
     var rnHr = (autoTrimpSettings.RAutoPortal.selected == "Radon Per Hour");
     radonon && (rnHr || autoTrimpSettings.RAutoPortal.selected == "Custom") ? turnOn("RadonHourChallenge") : turnOff("RadonHourChallenge");
     radonon && (rnHr) ? turnOn("RnHrDontPortalBefore") : turnOff("RnHrDontPortalBefore");
@@ -1715,10 +1716,10 @@ function updateCustomButtons() {
     !radonon && getPageSetting('AutoPortalDaily') == 1 ? turnOn("dHeHrDontPortalBefore") : turnOff("dHeHrDontPortalBefore");
     !radonon && getPageSetting('AutoPortalDaily') == 1 ? turnOn("dHeliumHrBuffer") : turnOff("dHeliumHrBuffer");
     !radonon && getPageSetting('AutoPortalDaily') > 0 ? turnOn("dHeliumHourChallenge") : turnOff("dHeliumHourChallenge");
-    
+
     //Shrine - U1 (Daily)
     !radonon ? turnOn("Hdshrine") : turnOff("Hdshrine");
-    (!radonon && getPageSetting('Hdshrine') == 1) ? turnOn("Hdshrinemaz"): turnOff("Hdshrinemaz");
+    (!radonon && getPageSetting('Hdshrine') == 1) ? turnOn("Hdshrinemaz") : turnOff("Hdshrinemaz");
     turnOff("Hdshrinezone");
     turnOff("Hdshrinecell");
     turnOff("Hdshrineamount");
@@ -1745,7 +1746,7 @@ function updateCustomButtons() {
 
     //RDTime Farm
     radonon ? turnOn("Rdtimefarm") : turnOff("Rdtimefarm");
-    (radonon && getPageSetting('Rdtimefarm') == 1) ? turnOn("Rdtimefarmmaz"): turnOff("Rdtimefarmmaz");
+    (radonon && getPageSetting('Rdtimefarm') == 1) ? turnOn("Rdtimefarmmaz") : turnOff("Rdtimefarmmaz");
     turnOff("Rdtimefarmzone");
     turnOff("Rdtimefarmcell");
     turnOff("Rdtimefarmtime");
@@ -1753,7 +1754,7 @@ function updateCustomButtons() {
     turnOff("Rdtimefarmmap");
     turnOff("Rdtimefarmspecial");
     turnOff("Rdtimefarmgather");
-    
+
     //RDHeirloom Swapping
     radonon ? turnOn('Rdhs') : turnOff('Rdhs');
     var dhson = (getPageSetting('Rdhs') == 1);
@@ -1771,10 +1772,10 @@ function updateCustomButtons() {
     radonon && dhson && dhsstaffon ? turnOn('Rdhsworldstaff') : turnOff('Rdhsworldstaff');
     radonon && dhson && dhsstaffon ? turnOn('Rdhsmapstaff') : turnOff('Rdhsmapstaff');
     radonon && dhson && dhsstaffon ? turnOn('Rdhstributestaff') : turnOff('Rdhstributestaff');
-    
+
     //Shrine - U2 (Daily)
     radonon ? turnOn("Rdshrine") : turnOff("Rdshrine");
-    (radonon && getPageSetting('Rdshrine') == 1) ? turnOn("Rdshrinemaz"): turnOff("Rdshrinemaz");
+    (radonon && getPageSetting('Rdshrine') == 1) ? turnOn("Rdshrinemaz") : turnOff("Rdshrinemaz");
     turnOff("Rdshrinezone");
     turnOff("Rdshrinecell");
     turnOff("Rdshrineamount");
@@ -1808,23 +1809,23 @@ function updateCustomButtons() {
     !radonon ? turnOn("MaxGym") : turnOff("MaxGym");
     !radonon ? turnOn("GymWall") : turnOff("GymWall");
     var fuckbuilding = (bwRewardUnlocked("AutoStructure") == true && bwRewardUnlocked("DecaBuild") && getPageSetting('hidebuildings') == true && getPageSetting('BuyBuildingsNew') == 0);
-    (!radonon && bwRewardUnlocked("AutoStructure") == true && bwRewardUnlocked("DecaBuild")) ? turnOn("hidebuildings"): turnOff("hidebuildings");
-    (!radonon && !fuckbuilding) ? turnOn("MaxHut"): turnOff("MaxHut");
-    (!radonon && !fuckbuilding) ? turnOn("MaxHouse"): turnOff("MaxHouse");
-    (!radonon && !fuckbuilding) ? turnOn("MaxMansion"): turnOff("MaxMansion");
-    (!radonon && !fuckbuilding) ? turnOn("MaxHotel"): turnOff("MaxHotel");
-    (!radonon && !fuckbuilding) ? turnOn("MaxResort"): turnOff("MaxResort");
-    (!radonon && !fuckbuilding) ? turnOn("MaxGateway"): turnOff("MaxGateway");
-    (!radonon && !fuckbuilding) ? turnOn("MaxWormhole"): turnOff("MaxWormhole");
-    (!radonon && !fuckbuilding) ? turnOn("MaxCollector"): turnOff("MaxCollector");
-    (!radonon && !fuckbuilding) ? turnOn("MaxTribute"): turnOff("MaxTribute");
-    (!radonon && !fuckbuilding) ? turnOn("MaxNursery"): turnOff("MaxNursery");
-    (!radonon && !fuckbuilding) ? turnOn("NoNurseriesUntil"): turnOff("NoNurseriesUntil");
-    (!radonon && !fuckbuilding) ? turnOn("WarpstationCap"): turnOff("WarpstationCap");
-    (!radonon && !fuckbuilding) ? turnOn("WarpstationCoordBuy"): turnOff("WarpstationCoordBuy");
-    (!radonon && !fuckbuilding) ? turnOn("FirstGigastation"): turnOff("FirstGigastation");
-    (!radonon && !fuckbuilding) ? turnOn("DeltaGigastation"): turnOff("DeltaGigastation");
-    (!radonon && !fuckbuilding) ? turnOn("WarpstationWall3"): turnOff("WarpstationWall3");
+    (!radonon && bwRewardUnlocked("AutoStructure") == true && bwRewardUnlocked("DecaBuild")) ? turnOn("hidebuildings") : turnOff("hidebuildings");
+    (!radonon && !fuckbuilding) ? turnOn("MaxHut") : turnOff("MaxHut");
+    (!radonon && !fuckbuilding) ? turnOn("MaxHouse") : turnOff("MaxHouse");
+    (!radonon && !fuckbuilding) ? turnOn("MaxMansion") : turnOff("MaxMansion");
+    (!radonon && !fuckbuilding) ? turnOn("MaxHotel") : turnOff("MaxHotel");
+    (!radonon && !fuckbuilding) ? turnOn("MaxResort") : turnOff("MaxResort");
+    (!radonon && !fuckbuilding) ? turnOn("MaxGateway") : turnOff("MaxGateway");
+    (!radonon && !fuckbuilding) ? turnOn("MaxWormhole") : turnOff("MaxWormhole");
+    (!radonon && !fuckbuilding) ? turnOn("MaxCollector") : turnOff("MaxCollector");
+    (!radonon && !fuckbuilding) ? turnOn("MaxTribute") : turnOff("MaxTribute");
+    (!radonon && !fuckbuilding) ? turnOn("MaxNursery") : turnOff("MaxNursery");
+    (!radonon && !fuckbuilding) ? turnOn("NoNurseriesUntil") : turnOff("NoNurseriesUntil");
+    (!radonon && !fuckbuilding) ? turnOn("WarpstationCap") : turnOff("WarpstationCap");
+    (!radonon && !fuckbuilding) ? turnOn("WarpstationCoordBuy") : turnOff("WarpstationCoordBuy");
+    (!radonon && !fuckbuilding) ? turnOn("FirstGigastation") : turnOff("FirstGigastation");
+    (!radonon && !fuckbuilding) ? turnOn("DeltaGigastation") : turnOff("DeltaGigastation");
+    (!radonon && !fuckbuilding) ? turnOn("WarpstationWall3") : turnOff("WarpstationWall3");
 
 
     //RBuildings
@@ -1837,12 +1838,12 @@ function updateCustomButtons() {
     radonon ? turnOn("RMaxGateway") : turnOff("RMaxGateway");
     radonon ? turnOn("RMaxCollector") : turnOff("RMaxCollector");
     radonon ? turnOn("RMaxTribute") : turnOff("RMaxTribute");
-    (radonon && getPageSetting('Rnurtureon') == true) ? turnOn("RMaxLabs"): turnOff("RMaxLabs");
+    (radonon && getPageSetting('Rnurtureon') == true) ? turnOn("RMaxLabs") : turnOff("RMaxLabs");
     radonon ? turnOn("Rmeltsmithy") : turnOff("Rmeltsmithy");
     radonon ? turnOn("Rsmithylogic") : turnOff("Rsmithylogic");
-    (radonon && getPageSetting('Rsmithylogic') == true) ? turnOn("Rsmithynumber"): turnOff("Rsmithynumber");
-    (radonon && getPageSetting('Rsmithylogic') == true) ? turnOn("Rsmithypercent"): turnOff("Rsmithypercent");
-    (radonon && getPageSetting('Rsmithylogic') == true) ? turnOn("Rsmithyseconds"): turnOff("Rsmithyseconds");
+    (radonon && getPageSetting('Rsmithylogic') == true) ? turnOn("Rsmithynumber") : turnOff("Rsmithynumber");
+    (radonon && getPageSetting('Rsmithylogic') == true) ? turnOn("Rsmithypercent") : turnOff("Rsmithypercent");
+    (radonon && getPageSetting('Rsmithylogic') == true) ? turnOn("Rsmithyseconds") : turnOff("Rsmithyseconds");
 
 
 
@@ -1850,13 +1851,13 @@ function updateCustomButtons() {
     !radonon ? turnOn("BuyJobsNew") : turnOff("BuyJobsNew");
     !radonon ? turnOn("AutoMagmamancers") : turnOff("AutoMagmamancers");
     var fuckjobbies = (bwRewardUnlocked("AutoJobs") && getPageSetting('fuckjobs') == true && getPageSetting('BuyJobsNew') == 0);
-    (!radonon && bwRewardUnlocked("AutoJobs")) ? turnOn("fuckjobs"): turnOff("fuckjobs");
-    (!radonon && !fuckjobbies) ? turnOn("FarmerRatio"): turnOff("FarmerRatio");
-    (!radonon && !fuckjobbies) ? turnOn("LumberjackRatio"): turnOff("LumberjackRatio");
-    (!radonon && !fuckjobbies) ? turnOn("MinerRatio"): turnOff("MinerRatio");
-    (!radonon && !fuckjobbies) ? turnOn("MaxScientists"): turnOff("MaxScientists");
-    (!radonon && !fuckjobbies) ? turnOn("MaxExplorers"): turnOff("MaxExplorers");
-    (!radonon && !fuckjobbies) ? turnOn("MaxTrainers"): turnOff("MaxTrainers");
+    (!radonon && bwRewardUnlocked("AutoJobs")) ? turnOn("fuckjobs") : turnOff("fuckjobs");
+    (!radonon && !fuckjobbies) ? turnOn("FarmerRatio") : turnOff("FarmerRatio");
+    (!radonon && !fuckjobbies) ? turnOn("LumberjackRatio") : turnOff("LumberjackRatio");
+    (!radonon && !fuckjobbies) ? turnOn("MinerRatio") : turnOff("MinerRatio");
+    (!radonon && !fuckjobbies) ? turnOn("MaxScientists") : turnOff("MaxScientists");
+    (!radonon && !fuckjobbies) ? turnOn("MaxExplorers") : turnOff("MaxExplorers");
+    (!radonon && !fuckjobbies) ? turnOn("MaxTrainers") : turnOff("MaxTrainers");
 
 
     //RJobs
@@ -1866,11 +1867,11 @@ function updateCustomButtons() {
     radonon ? turnOn("RMinerRatio") : turnOff("RMinerRatio");
     radonon ? turnOn("RMaxExplorers") : turnOff("RMaxExplorers");
     radonon ? turnOn("Rshipfarmon") : turnOff("Rshipfarmon");
-    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmzone"): turnOff("Rshipfarmzone");
-    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmcell"): turnOff("Rshipfarmcell");
-    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmamount"): turnOff("Rshipfarmamount");
-    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmlevel"): turnOff("Rshipfarmlevel");
-    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmfrag"): turnOff("Rshipfarmfrag");
+    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmzone") : turnOff("Rshipfarmzone");
+    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmcell") : turnOff("Rshipfarmcell");
+    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmamount") : turnOff("Rshipfarmamount");
+    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmlevel") : turnOff("Rshipfarmlevel");
+    (radonon && getPageSetting('Rshipfarmon') == true) ? turnOn("Rshipfarmfrag") : turnOff("Rshipfarmfrag");
 
 
 
@@ -1894,19 +1895,19 @@ function updateCustomButtons() {
     //RGear
 
     radonon ? turnOn("Requipon") : turnOff("Requipon");
-    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requipamount"): turnOff("Requipamount");
-    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requipcapattack"): turnOff("Requipcapattack");
-    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requipcaphealth"): turnOff("Requipcaphealth");
-    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requipzone"): turnOff("Requipzone");
-    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requippercent"): turnOff("Requippercent");
-    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requip2"): turnOff("Requip2");
-    (radonon && getPageSetting('Requipon') == true) ? turnOn("Rdmgcuntoff"): turnOff("Rdmgcuntoff");
+    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requipamount") : turnOff("Requipamount");
+    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requipcapattack") : turnOff("Requipcapattack");
+    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requipcaphealth") : turnOff("Requipcaphealth");
+    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requipzone") : turnOff("Requipzone");
+    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requippercent") : turnOff("Requippercent");
+    (radonon && getPageSetting('Requipon') == true) ? turnOn("Requip2") : turnOff("Requip2");
+    (radonon && getPageSetting('Requipon') == true) ? turnOn("Rdmgcuntoff") : turnOff("Rdmgcuntoff");
 
     radonon ? turnOn("Requipfarmon") : turnOff("Requipfarmon");
-    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmzone"): turnOff("Requipfarmzone");
-    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("RequipfarmHD"): turnOff("RequipfarmHD");
-    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmmult"): turnOff("Requipfarmmult");
-    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmhits"): turnOff("Requipfarmhits");
+    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmzone") : turnOff("Requipfarmzone");
+    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("RequipfarmHD") : turnOff("RequipfarmHD");
+    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmmult") : turnOff("Requipfarmmult");
+    (radonon && getPageSetting('Requipfarmon') == true) ? turnOn("Requipfarmhits") : turnOff("Requipfarmhits");
 
 
 
@@ -1920,8 +1921,8 @@ function updateCustomButtons() {
     (!radonon && getPageSetting('AutoMaps') == 2) ? turnOn("AMUbw") : turnOff("AMUbw");
     (!radonon && getPageSetting('AutoMaps') == 2) ? turnOn("AMUstar") : turnOff("AMUstar");
     !radonon ? turnOn("automapsportal") : turnOff("automapsportal");
-    
-    
+
+
     !radonon ? turnOn("mapselection") : turnOff("mapselection");
     !radonon ? turnOn("DynamicSiphonology") : turnOff("DynamicSiphonology");
     !radonon ? turnOn("PreferMetal") : turnOff("PreferMetal");
@@ -1945,10 +1946,10 @@ function updateCustomButtons() {
     (!radonon && getPageSetting("farmWonders")) ? turnOn("wondersAmount") : turnOff("wondersAmount");
     (!radonon && getPageSetting("farmWonders")) ? turnOn("maxExpZone") : turnOff("maxExpZone");
     (!radonon && getPageSetting("farmWonders")) ? turnOn("finishExpOnBw") : turnOff("finishExpOnBw");
-  
+
     //Shrine - U1
     !radonon ? turnOn("Hshrine") : turnOff("Hshrine");
-    (!radonon && getPageSetting('Hshrine') == true) ? turnOn("Hshrinemaz"): turnOff("Hshrinemaz");
+    (!radonon && getPageSetting('Hshrine') == true) ? turnOn("Hshrinemaz") : turnOff("Hshrinemaz");
     turnOff("Hshrinezone");
     turnOff("Hshrinecell");
     turnOff("Hshrineamount");
@@ -1966,7 +1967,7 @@ function updateCustomButtons() {
     radonon ? turnOn("RDisableFarm") : turnOff("RDisableFarm");
 
     radonon ? turnOn("Rtimefarm") : turnOff("Rtimefarm");
-    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmmaz"): turnOff("Rtimefarmmaz");
+    (radonon && getPageSetting('Rtimefarm') == true) ? turnOn("Rtimefarmmaz") : turnOff("Rtimefarmmaz");
     turnOff("Rtimefarmzone");
     turnOff("Rtimefarmcell");
     turnOff("Rtimefarmtime");
@@ -1976,7 +1977,7 @@ function updateCustomButtons() {
     turnOff("Rtimefarmgather");
 
     radonon ? turnOn("Rtributefarm") : turnOff("Rtributefarm");
-    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmmaz"): turnOff("Rtributefarmmaz");
+    (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmmaz") : turnOff("Rtributefarmmaz");
     turnOff("Rtributefarmzone");
     turnOff("Rtributefarmcell");
     turnOff("Rtributefarmamount");
@@ -1984,10 +1985,10 @@ function updateCustomButtons() {
     turnOff("Rtributemapselection");
     turnOff("Rtributespecialselection");
     turnOff("Rtributegatherselection");
-    
+
     // Shrine - U2
     radonon ? turnOn("Rshrine") : turnOff("Rshrine");
-    (radonon && getPageSetting('Rshrine') == true) ? turnOn("Rshrinemaz"): turnOff("Rshrinemaz");
+    (radonon && getPageSetting('Rshrine') == true) ? turnOn("Rshrinemaz") : turnOff("Rshrinemaz");
     turnOff("Rshrinezone");
     turnOff("Rshrinecell");
     turnOff("Rshrineamount");
@@ -2040,16 +2041,16 @@ function updateCustomButtons() {
 
     //Windstacking
     var wson = (getPageSetting('AutoStance') == 3);
-    (!radonon && !wson) ? turnOn("turnwson"): turnOff("turnwson");
-    (!radonon && wson) ? turnOn("windhealthy"): turnOff("windhealthy");
-    (!radonon && wson) ? turnOn("usebstance"): turnOff("usebstance");
-    (!radonon && wson) ? turnOn("WindStackingMin"): turnOff("WindStackingMin");
-    (!radonon && wson) ? turnOn("WindStackingMinHD"): turnOff("WindStackingMinHD");
-    (!radonon && wson) ? turnOn("WindStackingMax"): turnOff("WindStackingMax");
-    (!radonon && wson) ? turnOn("windcutoff"): turnOff("windcutoff");
-    (!radonon && wson) ? turnOn("windcutoffmap"): turnOff("windcutoffmap");
-    (!radonon && wson) ? turnOn("wsmax"): turnOff("wsmax");
-    (!radonon && wson) ? turnOn("wsmaxhd"): turnOff("wsmaxhd");
+    (!radonon && !wson) ? turnOn("turnwson") : turnOff("turnwson");
+    (!radonon && wson) ? turnOn("windhealthy") : turnOff("windhealthy");
+    (!radonon && wson) ? turnOn("usebstance") : turnOff("usebstance");
+    (!radonon && wson) ? turnOn("WindStackingMin") : turnOff("WindStackingMin");
+    (!radonon && wson) ? turnOn("WindStackingMinHD") : turnOff("WindStackingMinHD");
+    (!radonon && wson) ? turnOn("WindStackingMax") : turnOff("WindStackingMax");
+    (!radonon && wson) ? turnOn("windcutoff") : turnOff("windcutoff");
+    (!radonon && wson) ? turnOn("windcutoffmap") : turnOff("windcutoffmap");
+    (!radonon && wson) ? turnOn("wsmax") : turnOff("wsmax");
+    (!radonon && wson) ? turnOn("wsmaxhd") : turnOff("wsmaxhd");
 
 
     //ATGA
@@ -2057,17 +2058,17 @@ function updateCustomButtons() {
     !radonon && getPageSetting('ATGA2') == true ? turnOn("ATGA2timer") : turnOff("ATGA2timer");
     !radonon && getPageSetting('ATGA2') == true ? turnOn("ATGA2gen") : turnOff("ATGA2gen");
     var ATGAon = (getPageSetting('ATGA2') == true && getPageSetting('ATGA2timer') > 0);
-    (!radonon && ATGAon) ? turnOn("zATGA2timer"): turnOff("zATGA2timer");
-    (!radonon && ATGAon && getPageSetting('zATGA2timer') > 0) ? turnOn("ztATGA2timer"): turnOff("ztATGA2timer");
-    (!radonon && ATGAon) ? turnOn("ATGA2timerz"): turnOff("ATGA2timerz");
-    (!radonon && ATGAon && getPageSetting('ATGA2timerz') > 0) ? turnOn("ATGA2timerzt"): turnOff("ATGA2timerzt");
-    (!radonon && ATGAon) ? turnOn("sATGA2timer"): turnOff("sATGA2timer");
-    (!radonon && ATGAon) ? turnOn("dsATGA2timer"): turnOff("dsATGA2timer");
-    (!radonon && ATGAon) ? turnOn("dATGA2timer"): turnOff("dATGA2timer");
-    (!radonon && ATGAon) ? turnOn("dhATGA2timer"): turnOff("dhATGA2timer");
-    (!radonon && ATGAon) ? turnOn("cATGA2timer"): turnOff("cATGA2timer");
-    (!radonon && ATGAon) ? turnOn("chATGA2timer"): turnOff("chATGA2timer");
-    (!radonon && ATGAon) ? turnOn("dATGA2Auto"): turnOff("dATGA2Auto");
+    (!radonon && ATGAon) ? turnOn("zATGA2timer") : turnOff("zATGA2timer");
+    (!radonon && ATGAon && getPageSetting('zATGA2timer') > 0) ? turnOn("ztATGA2timer") : turnOff("ztATGA2timer");
+    (!radonon && ATGAon) ? turnOn("ATGA2timerz") : turnOff("ATGA2timerz");
+    (!radonon && ATGAon && getPageSetting('ATGA2timerz') > 0) ? turnOn("ATGA2timerzt") : turnOff("ATGA2timerzt");
+    (!radonon && ATGAon) ? turnOn("sATGA2timer") : turnOff("sATGA2timer");
+    (!radonon && ATGAon) ? turnOn("dsATGA2timer") : turnOff("dsATGA2timer");
+    (!radonon && ATGAon) ? turnOn("dATGA2timer") : turnOff("dATGA2timer");
+    (!radonon && ATGAon) ? turnOn("dhATGA2timer") : turnOff("dhATGA2timer");
+    (!radonon && ATGAon) ? turnOn("cATGA2timer") : turnOff("cATGA2timer");
+    (!radonon && ATGAon) ? turnOn("chATGA2timer") : turnOff("chATGA2timer");
+    (!radonon && ATGAon) ? turnOn("dATGA2Auto") : turnOff("dATGA2Auto");
 
 
 
@@ -2097,7 +2098,7 @@ function updateCustomButtons() {
 
     //Quagmire
     radonon ? turnOn("Rblackbog") : turnOff("Rblackbog");
-    (radonon && getPageSetting('Rblackbog') == true) ? turnOn("Rblackbogmaz"): turnOff("Rblackbogmaz");
+    (radonon && getPageSetting('Rblackbog') == true) ? turnOn("Rblackbogmaz") : turnOff("Rblackbogmaz");
     turnOff("Rblackbogzone");
     turnOff("Rblackbogamount");
 
@@ -2287,13 +2288,13 @@ function updateCustomButtons() {
     !radonon ? turnOn("spendmagmite") : turnOff("spendmagmite");
     !radonon ? turnOn("ratiospend") : turnOff("ratiospend");
     var ratiospend = getPageSetting('ratiospend');
-    (!radonon && !ratiospend) ? turnOn("SupplyWall"): turnOff("SupplyWall");
-    (!radonon && !ratiospend) ? turnOn("spendmagmitesetting"): turnOff("spendmagmitesetting");
-    (!radonon && !ratiospend) ? turnOn("MagmiteExplain"): turnOff("MagmiteExplain");
-    (!radonon && ratiospend) ? turnOn("effratio"): turnOff("effratio");
-    (!radonon && ratiospend) ? turnOn("capratio"): turnOff("capratio");
-    (!radonon && ratiospend) ? turnOn("supratio"): turnOff("supratio");
-    (!radonon && ratiospend) ? turnOn("ocratio"): turnOff("ocratio");
+    (!radonon && !ratiospend) ? turnOn("SupplyWall") : turnOff("SupplyWall");
+    (!radonon && !ratiospend) ? turnOn("spendmagmitesetting") : turnOff("spendmagmitesetting");
+    (!radonon && !ratiospend) ? turnOn("MagmiteExplain") : turnOff("MagmiteExplain");
+    (!radonon && ratiospend) ? turnOn("effratio") : turnOff("effratio");
+    (!radonon && ratiospend) ? turnOn("capratio") : turnOff("capratio");
+    (!radonon && ratiospend) ? turnOn("supratio") : turnOff("supratio");
+    (!radonon && ratiospend) ? turnOn("ocratio") : turnOff("ocratio");
 
 
     //Golden
@@ -2351,7 +2352,7 @@ function updateCustomButtons() {
 
 
     //Display
-    (game.worldUnlocks.easterEgg.locked == false) ? turnOn('AutoEggs'): turnOff('AutoEggs');
+    (game.worldUnlocks.easterEgg.locked == false) ? turnOn('AutoEggs') : turnOff('AutoEggs');
     turnOff("zonetracker");
 
 
@@ -2385,31 +2386,31 @@ function updateCustomButtons() {
     var keepstaffenable = (autoheirloomenable && getPageSetting('keepstaffs') == true);
     var keepcoreenable = (autoheirloomenable && getPageSetting('keepcores') == true);
 
-    (autoheirloomenable) ? turnOn('typetokeep'): turnOff('typetokeep');
-    (autoheirloomenable) ? turnOn('raretokeep'): turnOff('raretokeep');
-    (autoheirloomenable) ? turnOn('keepshields'): turnOff('keepshields');
-    (autoheirloomenable) ? turnOn('keepstaffs'): turnOff('keepstaffs');
+    (autoheirloomenable) ? turnOn('typetokeep') : turnOff('typetokeep');
+    (autoheirloomenable) ? turnOn('raretokeep') : turnOff('raretokeep');
+    (autoheirloomenable) ? turnOn('keepshields') : turnOff('keepshields');
+    (autoheirloomenable) ? turnOn('keepstaffs') : turnOff('keepstaffs');
 
-    (keepshieldenable) ? turnOn('slot1modsh'): turnOff('slot1modsh');
-    (keepshieldenable) ? turnOn('slot2modsh'): turnOff('slot2modsh');
-    (keepshieldenable) ? turnOn('slot3modsh'): turnOff('slot3modsh');
-    (keepshieldenable) ? turnOn('slot4modsh'): turnOff('slot4modsh');
-    (keepshieldenable) ? turnOn('slot5modsh'): turnOff('slot5modsh');
-    (keepshieldenable) ? turnOn('slot6modsh'): turnOff('slot6modsh');
-    (keepshieldenable) ? turnOn('slot7modsh'): turnOff('slot7modsh');
+    (keepshieldenable) ? turnOn('slot1modsh') : turnOff('slot1modsh');
+    (keepshieldenable) ? turnOn('slot2modsh') : turnOff('slot2modsh');
+    (keepshieldenable) ? turnOn('slot3modsh') : turnOff('slot3modsh');
+    (keepshieldenable) ? turnOn('slot4modsh') : turnOff('slot4modsh');
+    (keepshieldenable) ? turnOn('slot5modsh') : turnOff('slot5modsh');
+    (keepshieldenable) ? turnOn('slot6modsh') : turnOff('slot6modsh');
+    (keepshieldenable) ? turnOn('slot7modsh') : turnOff('slot7modsh');
 
-    (keepstaffenable) ? turnOn('slot1modst'): turnOff('slot1modst');
-    (keepstaffenable) ? turnOn('slot2modst'): turnOff('slot2modst');
-    (keepstaffenable) ? turnOn('slot3modst'): turnOff('slot3modst');
-    (keepstaffenable) ? turnOn('slot4modst'): turnOff('slot4modst');
-    (keepstaffenable) ? turnOn('slot5modst'): turnOff('slot5modst');
-    (keepstaffenable) ? turnOn('slot6modst'): turnOff('slot6modst');
-    (keepstaffenable) ? turnOn('slot7modst'): turnOff('slot7modst');
+    (keepstaffenable) ? turnOn('slot1modst') : turnOff('slot1modst');
+    (keepstaffenable) ? turnOn('slot2modst') : turnOff('slot2modst');
+    (keepstaffenable) ? turnOn('slot3modst') : turnOff('slot3modst');
+    (keepstaffenable) ? turnOn('slot4modst') : turnOff('slot4modst');
+    (keepstaffenable) ? turnOn('slot5modst') : turnOff('slot5modst');
+    (keepstaffenable) ? turnOn('slot6modst') : turnOff('slot6modst');
+    (keepstaffenable) ? turnOn('slot7modst') : turnOff('slot7modst');
 
-    (keepcoreenable) ? turnOn('slot1modcr'): turnOff('slot1modcr');
-    (keepcoreenable) ? turnOn('slot2modcr'): turnOff('slot2modcr');
-    (keepcoreenable) ? turnOn('slot3modcr'): turnOff('slot3modcr');
-    (keepcoreenable) ? turnOn('slot4modcr'): turnOff('slot4modcr');
+    (keepcoreenable) ? turnOn('slot1modcr') : turnOff('slot1modcr');
+    (keepcoreenable) ? turnOn('slot2modcr') : turnOff('slot2modcr');
+    (keepcoreenable) ? turnOn('slot3modcr') : turnOff('slot3modcr');
+    (keepcoreenable) ? turnOn('slot4modcr') : turnOff('slot4modcr');
 
 
     //Dropdowns
@@ -2534,7 +2535,7 @@ function getDailyRnHrStats() {
     return a
 }
 
-function settingsProfileMakeGUI() {}
+function settingsProfileMakeGUI() { }
 
 function toggleAutoMaps() {
     if (game.global.universe == 1) {
