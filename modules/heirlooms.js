@@ -449,7 +449,7 @@ function RhsScienceStaff() { for (loom of game.global.heirloomsCarried) if (loom
 function Rdhsworldstaff() { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting('Rdhsworldstaff')) return loom; }
 function Rdhsmapstaff() { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting('Rdhsmapstaff')) return loom; }
 function Rdhstributestaff() { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting('Rdhstributestaff')) return loom; }
-function findHeirloom(name) { for (loom of game.global.herloomsCarried) if (loom.name == getPageSetting(name)) return loom; }
+function findHeirloom(name) { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting(name)) return loom; }
 
 function Rhsequip1() {
 	if (Rhsshield1() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhs1')) {
