@@ -546,7 +546,8 @@ function Rheirloomswap() {
 			case (getPageSetting('Rhsworldstaff') != "undefined" && game.global.mapsActive == false):
 				Rhsworldstaffequip();
 				break;
-
+			default:
+				break;
 		}
 	}
 }
