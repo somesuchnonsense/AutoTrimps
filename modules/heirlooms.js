@@ -533,17 +533,20 @@ function Rheirloomswap() {
 	}
 	//Swapping Staffs
 	if (getPageSetting('Rhsstaff') != false) {
-		if (getPageSetting('Rhsworldstaff') != "undefined" && game.global.mapsActive == false) {
-			Rhsworldstaffequip();
-		}
-		if (getPageSetting('Rhsmapstaff') != "undefined" && ((Rshouldshipfarm == false && Rshouldtributefarm == false) || getPageSetting('Rhstributestaff') == "undefined") && game.global.mapsActive == true) {
-			Rhsmapstaffequip();
-		}
-		if (getPageSetting('Rhstributestaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtributefarm == true || Rshouldshipfarm == true) && game.global.mapsActive == true) {
-			Rhstributestaffequip();
-		}
-		if (getPageSetting('RhsScienceStaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtimefarm == true && game.global.challengeActive == "Archaeology") && game.global.mapsActive == true) {
-			EquipStaffByName('RhsScienceStaff');
+		switch (true) {
+			case (getPageSetting('RhsScienceStaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtimefarm == true && game.global.challengeActive == "Archaeology") && game.global.mapsActive == true):
+				EquipStaffByName('RhsScienceStaff');
+				break;
+			case (getPageSetting('Rhstributestaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtributefarm == true || Rshouldshipfarm == true) && game.global.mapsActive == true):
+				Rhstributestaffequip();
+				break;
+			case (getPageSetting('Rhsmapstaff') != "undefined" && ((Rshouldshipfarm == false && Rshouldtributefarm == false) || getPageSetting('Rhstributestaff') == "undefined") && game.global.mapsActive == true):
+				Rhsmapstaffequip();
+				break;
+			case (getPageSetting('Rhsworldstaff') != "undefined" && game.global.mapsActive == false):
+				Rhsworldstaffequip();
+				break;
+
 		}
 	}
 }
