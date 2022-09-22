@@ -449,7 +449,6 @@ function RhsScienceStaff() { for (loom of game.global.heirloomsCarried) if (loom
 function Rdhsworldstaff() { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting('Rdhsworldstaff')) return loom; }
 function Rdhsmapstaff() { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting('Rdhsmapstaff')) return loom; }
 function Rdhstributestaff() { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting('Rdhstributestaff')) return loom; }
-function findHeirloom(name) { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting(name)) return loom; }
 
 function Rhsequip1() {
 	if (Rhsshield1() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhs1')) {
@@ -514,7 +513,8 @@ function Rdhstributestaffequip() {
 	}
 }
 function EquipStaffByName(name) {
-	if (findHeirloom(name) != "undefined" && game.global.StaffEquipped.name != getPageSetting(name)) {
+	var loom = game.global.heirloomsCarried.find(x => x.name == name);
+	if (loom != "undefined" && game.global.StaffEquipped.name != getPageSetting(name)) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
 		equipHeirloom();
 	}
