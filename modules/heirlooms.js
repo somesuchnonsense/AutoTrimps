@@ -513,7 +513,7 @@ function Rdhstributestaffequip() {
 	}
 }
 function EquipStaffByName(name) {
-	var loom = game.global.heirloomsCarried.find(x => x.name == name);
+	var loom = game.global.heirloomsCarried.find(x => x.name == getPageSetting(name));
 	if (loom != "undefined" && game.global.StaffEquipped.name != getPageSetting(name)) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
 		equipHeirloom();
