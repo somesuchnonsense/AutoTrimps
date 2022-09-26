@@ -199,25 +199,25 @@ function autoheirlooms3() {
 function lowHeirloom() {
 	if (lowdmgshield() != undefined && game.global.ShieldEquipped.name != getPageSetting('lowdmg')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function dlowHeirloom() {
 	if (dlowdmgshield() != undefined && game.global.ShieldEquipped.name != getPageSetting('dlowdmg')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function highHeirloom() {
 	if (highdmgshield() != undefined && game.global.ShieldEquipped.name != getPageSetting('highdmg')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function dhighHeirloom() {
 	if (dhighdmgshield() != undefined && game.global.ShieldEquipped.name != getPageSetting('dhighdmg')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 
@@ -453,70 +453,70 @@ function Rdhstributestaff() { for (loom of game.global.heirloomsCarried) if (loo
 function Rhsequip1() {
 	if (Rhsshield1() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhs1')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function Rhsequip2() {
 	if (Rhsshield2() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhs2')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function Rdhsequip1() {
 	if (Rdhsshield1() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rdhs1')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function Rdhsequip2() {
 	if (Rdhsshield2() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rdhs2')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function Rhsworldstaffequip() {
 	if (Rhsworldstaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhsworldstaff')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function Rhsmapstaffequip() {
 	if (Rhsmapstaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhsmapstaff')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 
 function Rhstributestaffequip() {
 	if (Rhstributestaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhstributestaff')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function Rdhsworldstaffequip() {
 	if (Rdhsworldstaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rdhsworldstaff')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function Rdhsmapstaffequip() {
 	if (Rdhsmapstaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rdhsmapstaff')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 
 function Rdhstributestaffequip() {
 	if (Rdhstributestaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rdhstributestaff')) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 function EquipStaffBySettingName(name) {
 	var loom = game.global.heirloomsCarried.find(x => x.name == getPageSetting(name));
 	if (loom != "undefined" && game.global.StaffEquipped.name != getPageSetting(name)) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(true);
+		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
 
@@ -575,52 +575,4 @@ function Rdheirloomswap() {
 			Rhstributestaffequip();
 		}
 	}
-}
-
-function EquipHeirloomByNameSilently(heirloomName) {
-	var heirloom = game.global.heirloomsCarried.find(x => x.name == heirloomName);
-	if (!!heirloom) return;
-	game.global.heirloomsCarried.splice(game.global.selectedHeirloom[0], 1);
-	if (typeof game.global[heirloom.type + "Equipped"].name !== 'undefined') {
-		if (!heirloom) heirloom = getSelectedHeirloom();
-		if (!toLocation) toLocation = "heirloomsCarried";
-		if (toLocation == "heirloomsCarried" && game.global.heirloomsCarried.length >= getMaxCarriedHeirlooms()) {
-			tooltip("Unequip Heirloom", null, 'update');
-			return;
-		}
-		game.global[heirloom.type + "Equipped"] = {};
-		if (toLocation == "heirloomsCarried") game.global.heirloomsCarried.push(heirloom);
-		else game.global.heirloomsExtra.push(heirloom);
-		//Remove bonuses
-		for (var item in game.heirlooms[heirloom.type]) {
-			var stat = game.heirlooms[heirloom.type][item];
-			if (item == 'trimpHealth') {
-				if (game.global.universe == 2) addSoldierHealth((1 / (1 + (stat.currentBonus / 1000))) - 1);
-				else addSoldierHealth((1 / (1 + (stat.currentBonus / 100))) - 1);
-			}
-			game.heirlooms[heirloom.type][item].currentBonus = 0;
-		}
-		if (!noScreenUpdate) populateHeirloomWindow();
-		updateGammaStacks();
-		updateAllBattleNumbers();
-		calculateParityBonus();
-	}
-	unequipHeirloom(game.global[heirloom.type + "Equipped"], game.global.selectedHeirloom[1], noScreenUpdate);
-	game.global[heirloom.type + "Equipped"] = heirloom;
-	//Add bonuses
-	for (var item in heirloom.mods) {
-		var bonus = heirloom.mods[item][1];
-		var name = heirloom.mods[item][0];
-		game.heirlooms[heirloom.type][heirloom.mods[item][0]].currentBonus = bonus;
-		if (name == 'trimpHealth') {
-			if (game.global.universe == 2) addSoldierHealth(bonus / 1000);
-			else addSoldierHealth(bonus / 100);
-		}
-	}
-	if (!noScreenUpdate) populateHeirloomWindow();
-	if (checkLowestHeirloom() >= 5) giveSingleAchieve("Swag");
-	if (checkLowestHeirloom() >= 7) giveSingleAchieve("Swagmatic");
-	updateAllBattleNumbers();
-	calculateParityBonus();
-
 }
