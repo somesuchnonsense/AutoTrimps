@@ -62,9 +62,8 @@ function automationMenuInit() {
 
     let extraMapBtnsColumns = document.getElementById('extraMapBtns');
     let farmButtonsRow = document.createElement("DIV");
+    farmButtonsRow.setAttribute("class", "battleSideBtnContainer");
 
-    let farmFoodContainer = document.createElement("DIV");
-    farmFoodContainer.setAttribute("class", "battleSideBtnContainer");
     let farmFoodButton = document.createElement("SPAN");
     farmFoodButton.setAttribute("class", "btn btn-danger");
     let farmFoodSymbol = document.createElement("SPAN");
@@ -72,11 +71,8 @@ function automationMenuInit() {
     farmFoodButton.appendChild(farmFoodSymbol);
     farmFoodButton.setAttribute("onClick", "toggleFarmMode('Food')");
     farmFoodButton.setAttribute('id', 'farmFoodBtn');
-    farmFoodContainer.appendChild(farmFoodButton);
-    farmButtonsRow.appendChild(farmFoodContainer);
+    farmButtonsRow.appendChild(farmFoodButton);
 
-    let farmWoodContainer = document.createElement("DIV");
-    farmWoodContainer.setAttribute("class", "battleSideBtnContainer");
     let farmWoodButton = document.createElement("SPAN");
     farmWoodButton.setAttribute("class", "btn btn-danger");
     let farmWoodSymbol = document.createElement("SPAN");
@@ -84,11 +80,8 @@ function automationMenuInit() {
     farmWoodButton.appendChild(farmWoodSymbol);
     farmWoodButton.setAttribute("onClick", "toggleFarmMode('Wood')");
     farmWoodButton.setAttribute('id', 'farmWoodBtn');
-    farmWoodContainer.appendChild(farmWoodButton);
-    farmButtonsRow.appendChild(farmWoodContainer);
+    farmButtonsRow.appendChild(farmWoodButton);
 
-    let farmMetalContainer = document.createElement("DIV");
-    farmMetalContainer.setAttribute("class", "battleSideBtnContainer");
     let farmMetalButton = document.createElement("SPAN");
     farmMetalButton.setAttribute("class", "btn btn-danger");
     let farmMetalSymbol = document.createElement("SPAN");
@@ -96,8 +89,7 @@ function automationMenuInit() {
     farmMetalButton.appendChild(farmMetalSymbol);
     farmMetalButton.setAttribute("onClick", "toggleFarmMode('Metal')");
     farmMetalButton.setAttribute('id', 'farmMetalBtn');
-    farmMetalContainer.appendChild(farmMetalButton);
-    farmButtonsRow.appendChild(farmMetalContainer);
+    farmButtonsRow.appendChild(farmMetalButton);
 
     extraMapBtnsColumns.appendChild(farmButtonsRow);
 }
