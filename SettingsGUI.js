@@ -69,7 +69,7 @@ function automationMenuInit() {
     farmFoodButton.setAttribute("class", "btn btn-danger");
     let farmFoodSymbol = document.createElement("SPAN");
     farmFoodSymbol.setAttribute('class', 'glyphicon glyphicon-apple');
-    farmFoodButton.appendChild(farmFoodSymbol));
+    farmFoodButton.appendChild(farmFoodSymbol);
     farmFoodButton.setAttribute("onClick", "toggleFarmMode('Food')");
     farmFoodButton.setAttribute('id', 'farmFoodBtn');
     farmButtonsRow.appendChild(farmFoodContainer);
@@ -80,7 +80,7 @@ function automationMenuInit() {
     farmWoodButton.setAttribute("class", "btn btn-danger");
     let farmWoodSymbol = document.createElement("SPAN");
     farmWoodSymbol.setAttribute('class', 'glyphicon glyphicon-tree-deciduous');
-    farmWoodButton.appendChild(farmWoodSymbol));
+    farmWoodButton.appendChild(farmWoodSymbol);
     farmWoodButton.setAttribute("onClick", "toggleFarmMode('Wood')");
     farmWoodButton.setAttribute('id', 'farmWoodBtn');
     farmButtonsRow.appendChild(farmWoodContainer);
@@ -91,7 +91,7 @@ function automationMenuInit() {
     farmMetalButton.setAttribute("class", "btn btn-danger");
     let farmMetalSymbol = document.createElement("SPAN");
     farmMetalSymbol.setAttribute('class', 'icomoon icon-cubes');
-    farmMetalButton.appendChild(farmMetalSymbol));
+    farmMetalButton.appendChild(farmMetalSymbol);
     farmMetalButton.setAttribute("onClick", "toggleFarmMode('Metal')");
     farmMetalButton.setAttribute('id', 'farmMetalBtn');
     farmButtonsRow.appendChild(farmMetalContainer);
