@@ -72,6 +72,7 @@ function automationMenuInit() {
     farmFoodButton.appendChild(farmFoodSymbol);
     farmFoodButton.setAttribute("onClick", "toggleFarmMode('Food')");
     farmFoodButton.setAttribute('id', 'farmFoodBtn');
+    farmFoodContainer.appendChild(farmFoodButton);
     farmButtonsRow.appendChild(farmFoodContainer);
 
     let farmWoodContainer = document.createElement("DIV");
@@ -83,6 +84,7 @@ function automationMenuInit() {
     farmWoodButton.appendChild(farmWoodSymbol);
     farmWoodButton.setAttribute("onClick", "toggleFarmMode('Wood')");
     farmWoodButton.setAttribute('id', 'farmWoodBtn');
+    farmWoodContainer.appendChild(farmWoodButton);
     farmButtonsRow.appendChild(farmWoodContainer);
 
     let farmMetalContainer = document.createElement("DIV");
@@ -94,6 +96,7 @@ function automationMenuInit() {
     farmMetalButton.appendChild(farmMetalSymbol);
     farmMetalButton.setAttribute("onClick", "toggleFarmMode('Metal')");
     farmMetalButton.setAttribute('id', 'farmMetalBtn');
+    farmMetalContainer.appendChild(farmMetalButton);
     farmButtonsRow.appendChild(farmMetalContainer);
 
     extraMapBtnsColumns.appendChild(farmMetalContainer);
