@@ -99,7 +99,7 @@ function automationMenuInit() {
     farmMetalContainer.appendChild(farmMetalButton);
     farmButtonsRow.appendChild(farmMetalContainer);
 
-    extraMapBtnsColumns.appendChild(farmMetalContainer);
+    extraMapBtnsColumns.appendChild(farmButtonsRow);
 }
 automationMenuInit();
 
