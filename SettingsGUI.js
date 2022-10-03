@@ -59,6 +59,44 @@ function automationMenuInit() {
     for (var x = 0; x < btns.length; x++) {
         btns[x].style.padding = "0.01vw 0.01vw";
     }
+
+    let extraMapBtnsColumns = document.getElementById('extraMapBtns');
+    let farmButtonsRow = document.createElement("DIV");
+
+    let farmFoodContainer = document.createElement("DIV");
+    farmFoodContainer.setAttribute("class", "battleSideBtnContainer");
+    let farmFoodButton = document.createElement("SPAN");
+    farmFoodButton.setAttribute("class", "btn btn-danger");
+    let farmFoodSymbol = document.createElement("SPAN");
+    farmFoodSymbol.setAttribute('class', 'glyphicon glyphicon-apple');
+    farmFoodButton.appendChild(farmFoodSymbol));
+    farmFoodButton.setAttribute("onClick", "toggleFarmMode('Food')");
+    farmFoodButton.setAttribute('id', 'farmFoodBtn');
+    farmButtonsRow.appendChild(farmFoodContainer);
+
+    let farmWoodContainer = document.createElement("DIV");
+    farmWoodContainer.setAttribute("class", "battleSideBtnContainer");
+    let farmWoodButton = document.createElement("SPAN");
+    farmWoodButton.setAttribute("class", "btn btn-danger");
+    let farmWoodSymbol = document.createElement("SPAN");
+    farmWoodSymbol.setAttribute('class', 'glyphicon glyphicon-tree-deciduous');
+    farmWoodButton.appendChild(farmWoodSymbol));
+    farmWoodButton.setAttribute("onClick", "toggleFarmMode('Wood')");
+    farmWoodButton.setAttribute('id', 'farmWoodBtn');
+    farmButtonsRow.appendChild(farmWoodContainer);
+
+    let farmMetalContainer = document.createElement("DIV");
+    farmMetalContainer.setAttribute("class", "battleSideBtnContainer");
+    let farmMetalButton = document.createElement("SPAN");
+    farmMetalButton.setAttribute("class", "btn btn-danger");
+    let farmMetalSymbol = document.createElement("SPAN");
+    farmMetalSymbol.setAttribute('class', 'icomoon icon-cubes');
+    farmMetalButton.appendChild(farmMetalSymbol));
+    farmMetalButton.setAttribute("onClick", "toggleFarmMode('Metal')");
+    farmMetalButton.setAttribute('id', 'farmMetalBtn');
+    farmButtonsRow.appendChild(farmMetalContainer);
+
+    extraMapBtnsColumns.appendChild(farmMetalContainer);
 }
 automationMenuInit();
 
@@ -1002,9 +1040,11 @@ function initializeAllSettings() {
     createSetting('Rhsmapstaff', 'Map', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff.', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhstributestaff', 'Tribute', '<b>Tribute farming staff</b><br><br>Enter the name of the staff you would like to equip during tribute farming.', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('RhsScienceStaff', 'Science', '<b>Science farming staff</b><br><br>Enter the name of the staff you would like to equip during science farming.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('RhsMetalStaff', 'Metal', '<b>Metal farming staff</b><br><br>Enter the name of the staff you would like to equip during metal farming.', 'textValue', 'undefined', null, 'Heirlooms');
+    createSetting('RhsWoodStaff', 'Wood', '<b>Wood farming staff</b><br><br>Enter the name of the staff you would like to equip during wood farming.', 'textValue', 'undefined', null, 'Heirlooms');
 
     //Heirloom Line
-    document.getElementById('Rhstributestaff').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('RhsWoodStaff').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('autoheirlooms', 'Auto Heirlooms', 'Auto Heirlooms master button. Turn this on to enable all Auto Heirloom settings. <br><br><b>The Modifier points will be explained here.</b> The more points an heirloom has, the better chance it has of being kept. If empty is selected, it will muliplty the score by 4. If any is selected, it will multiply the score of the heirloom by 2. <br><br>E.g Mod 1 = CC (+6 if dropped, 1st modifier) <br>Mod 2 = CD (+5 if dropped, 2nd modifier) <br>Mod 3 = PB (+4 if dropped, 3rd modifier) <br>Mod 4 = Empty (x4 if dropped, +0 if not) <br>Mod 5 = Empty (x4 if dropped, +0 if not) <br><br>If an heirloom dropped with these exact modifiers, it would get a score of 192 (6+5+4*4*4=240). The highest point heirlooms will be kept. ', 'boolean', false, null, 'Heirlooms');
     createSetting('typetokeep', ['None', 'Shields', 'Staffs', 'Cores', 'All'], '<b>Shields: </b>Keeps Shields and nothing else.<br><b>Staffs: </b>Keeps Staffs and nothing else.<br><b>Cores: </b>Keeps Cores and nothing else.<br><b>All: </b>Keeps 4 Shields and 3 Staffs and 3 Cores. If you have protected heirlooms in your inventory it will overrite one slot. E.g if one heirloom is protected, you will keep 4 Shields and 3 Staffs and 2 Cores. ', 'multitoggle', 0, null, 'Heirlooms');
     createSetting('raretokeep', 'Rarity to Keep', 'Auto Heirlooms. Keeps the selected rarity of heirloom, recycles all others. ', 'dropdown', 'Any', ["Any", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Magnificent", "Ethereal", "Magmatic", "Plagued", "Radiating", "Hazardous", "Enigmatic"], 'Heirlooms');
@@ -2381,6 +2421,8 @@ function updateCustomButtons() {
     radonon && hson && hsstaffon ? turnOn('Rhsmapstaff') : turnOff('Rhsmapstaff');
     radonon && hson && hsstaffon ? turnOn('Rhstributestaff') : turnOff('Rhstributestaff');
     radonon && hson && hsstaffon ? turnOn('RhsScienceStaff') : turnOff('RhsScienceStaff');
+    radonon && hson && hsstaffon ? turnOn('RhsMetalStaff') : turnOff('RhsMetalStaff');
+    radonon && hson && hsstaffon ? turnOn('RhsWoodStaff') : turnOff('RhsWoodStaff');
 
     var autoheirloomenable = (getPageSetting('autoheirlooms') == true);
     var keepshieldenable = (autoheirloomenable && getPageSetting('keepshields') == true);
@@ -2555,4 +2597,33 @@ function toggleAutoMaps() {
         }
         document.getElementById('autoMapBtn').setAttribute('class', 'noselect settingsBtn settingBtn' + autoTrimpSettings.RAutoMaps.value);
     }
+}
+function toggleFarmMode(modeName) {
+    let currentFarmedResource = getPageSetting('ResourceToFarm');
+    let metalBtn = document.getElementById('farmMetalBtn');
+    let foodBtn = document.getElementById('farmFoodBtn');
+    let woodBtn = document.getElementById('farmWoodBtn');
+    switch (modeName) {
+        case 'Metal':
+            metalBtn.classList.toggle("btn-success");
+            metalBtn.classList.toggle("btn-danger");
+            woodBtn.setAttribute('class', 'btn-danger');
+            foodBtn.setAttribute('class', 'btn-danger');
+            break;
+        case 'Wood':
+            woodBtn.classList.toggle("btn-success");
+            woodBtn.classList.toggle("btn-danger");
+            metalBtn.setAttribute('class', 'btn-danger');
+            foodBtn.setAttribute('class', 'btn-danger');
+            break;
+        case 'Food':
+            foodBtn.classList.toggle("btn-success");
+            foodBtn.classList.toggle("btn-danger");
+            woodBtn.setAttribute('class', 'btn-danger');
+            metalBtn.setAttribute('class', 'btn-danger');
+            break;
+    }
+
+    setPageSetting('ResourceToFarm', modeName != currentFarmedResource ? modeName : '');
+
 }

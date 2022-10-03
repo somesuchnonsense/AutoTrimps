@@ -547,7 +547,7 @@ function RbuyJobs() {
     // Explicit firefox handling because Ff specifically reduces free workers to 0.
     var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
-    var reserveMod = isFirefox || typeof(isSteam) !== 'undefined' ? 1 + (game.resources.trimps.owned / 1e10) : 1;
+    var reserveMod = isFirefox || typeof (isSteam) !== 'undefined' ? 1 + (game.resources.trimps.owned / 1e10) : 1;
 
     freeWorkers -= (game.resources.trimps.owned > 1e6) ? reservedJobs * reserveMod : 0;
 
@@ -557,11 +557,12 @@ function RbuyJobs() {
     if (Rshouldtimefarm) {
         var timefarmzone = getPageSetting('Rtimefarmzone');
         var timefarmlevelindex = timefarmzone.indexOf(game.global.world);
-        if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('wc')) {
+        let currentFarmMode = getPageSettting('ResourceToFarm');
+        if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('wc') || currentFarmMode == 'Wood') {
             allIn = "Lumberjack";
-        } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('sc')) {
+        } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('sc') || currentFarmMode == 'Food') {
             allIn = "Farmer";
-        } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('mc')) {
+        } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('mc') || currentFarmMode == 'Metal') {
             allIn = "Miner";
         } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('rc')) {
             allIn = "Scientist";
@@ -642,7 +643,7 @@ function RbuyJobs() {
 
     // Safe check total worker costs, almost never going to be an issue
     // Or another reason that we're unable to buy everything we want
-    if (totalWorkerCost > game.resources.food.owned /* or breeding/available stuff */ ) {
+    if (totalWorkerCost > game.resources.food.owned /* or breeding/available stuff */) {
         // Buy max on food and then let the next frame take care of the rest.
         var buyAmountStore = game.global.buyAmt;
         game.global.buyAmt = "Max";

@@ -512,13 +512,15 @@ function Rdhstributestaffequip() {
 		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
-function EquipStaffBySettingName(name) {
-	var loom = game.global.heirloomsCarried.find(x => x.name == getPageSetting(name));
-	if (loom != "undefined" && game.global.StaffEquipped.name != getPageSetting(name)) {
+function EquipHeirloomByTypeAndSettingName(type, name) {
+	let loom = game.global.heirloomsCarried.find(x => x.name == getPageSetting(name));
+	let currentlyEquipedLoomName = type === 'shield' ? game.global.ShieldEquipped.name : game.global.StaffEquipped.name;
+	if (loom != "undefined" && currentlyEquipedLoomName != getPageSetting(name)) {
 		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
 		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
 	}
 }
+
 
 function Rheirloomswap() {
 
@@ -533,18 +535,25 @@ function Rheirloomswap() {
 	}
 	//Swapping Staffs
 	if (getPageSetting('Rhsstaff') != false) {
+		let currentFarmMode = getPageSetting('ResourceToFarm');
 		switch (true) {
-			case (getPageSetting('RhsScienceStaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtimefarm == true && game.global.challengeActive == "Archaeology") && game.global.mapsActive == true):
-				EquipStaffBySettingName('RhsScienceStaff');
+			case ((Rshouldtimefarm == true && game.global.challengeActive == "Archaeology") && game.global.mapsActive == true && getPageSetting('RhsScienceStaff') != "undefined"):
+				EquipHeirloomByTypeAndSettingName('staff', 'RhsScienceStaff');
 				break;
-			case (getPageSetting('Rhstributestaff') != "undefined" && getPageSetting('Rhsstaff') && (Rshouldtributefarm == true || Rshouldshipfarm == true) && game.global.mapsActive == true):
-				Rhstributestaffequip();
+			case ((Rshouldtributefarm == true || Rshouldshipfarm == true || currentFarmMode === 'Food') && game.global.mapsActive == true && !!getPageSetting('Rhstributestaff')):
+				EquipHeirloomByTypeAndSettingName('staff', 'Rhstributestaff');
+				break;
+			case (currentFarmMode === 'Wood' && game.global.mapsActive == true && !!getPageSetting('RhsWoodStaff')):
+				EquipHeirloomByTypeAndSettingName('staff', 'RhsWoodStaff');
+				break;
+			case (currentFarmMode === 'Metal' && game.global.mapsActive == true && !!getPageSetting('RhsMetalStaff')):
+				EquipHeirloomByTypeAndSettingName('staff', 'RhsMetalStaff');
 				break;
 			case (getPageSetting('Rhsmapstaff') != "undefined" && game.global.mapsActive == true):
-				Rhsmapstaffequip();
+				EquipHeirloomByTypeAndSettingName('staff', 'Rhsmapstaff');
 				break;
 			case (getPageSetting('Rhsworldstaff') != "undefined" && game.global.mapsActive == false):
-				Rhsworldstaffequip();
+				EquipHeirloomByTypeAndSettingName('staff', 'Rhsworldstaff');
 				break;
 			default:
 				break;
