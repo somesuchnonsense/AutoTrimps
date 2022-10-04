@@ -64,7 +64,7 @@ function automationMenuInit() {
     let farmButtonsRow = document.createElement("DIV");
     farmButtonsRow.setAttribute("class", "battleSideBtnContainer");
     farmButtonsRow.setAttribute('style', 'display: flex; flex-flow: row wrap; justify-content: space-around;');
-    farmButtonsRow.setAttribute('onmouseover', 'tooltip(\"Resource Farming Buttons\", \"customText\",event, \"While active, will reassign all workers to the resource and equip the appropriate staff (if set in AT settings.) \"');
+    farmButtonsRow.setAttribute('onmouseover', 'tooltip(\"Resource Farming Buttons\", \"customText\",event, \"While active, will reassign all workers to the resource and equip the appropriate staff (if set in AT settings.) \");');
 
     let farmFoodButton = document.createElement("SPAN");
     farmFoodButton.setAttribute("class", "btn btn-danger");
@@ -2612,6 +2612,7 @@ function toggleFarmMode(modeName) {
     let metalBtn = document.getElementById('farmMetalBtn');
     let foodBtn = document.getElementById('farmFoodBtn');
     let woodBtn = document.getElementById('farmWoodBtn');
+    let scienceBtn = document.getElementById('farmScienceBtn');
     switch (modeName) {
         case 'Metal':
             metalBtn.classList.toggle("btn-success");
