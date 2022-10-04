@@ -554,15 +554,25 @@ function RbuyJobs() {
     // Calculate how much of each worker we should have
     // If focused farming go all in for caches
     var allIn = "";
+    switch (ResourceToFarm) {
+        case 'Food':
+            allin = 'Farmer';
+            break;
+        case 'Wood':
+            allin = 'Lumberjack';
+            break;
+        case 'Metal':
+            allin = 'Miner';
+            break;
+    }
     if (Rshouldtimefarm) {
         var timefarmzone = getPageSetting('Rtimefarmzone');
         var timefarmlevelindex = timefarmzone.indexOf(game.global.world);
-        let currentFarmMode = getPageSettting('ResourceToFarm');
-        if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('wc') || currentFarmMode == 'Wood') {
+        if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('wc')) {
             allIn = "Lumberjack";
-        } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('sc') || currentFarmMode == 'Food') {
+        } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('sc')) {
             allIn = "Farmer";
-        } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('mc') || currentFarmMode == 'Metal') {
+        } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('mc')) {
             allIn = "Miner";
         } else if (autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex].includes('rc')) {
             allIn = "Scientist";
@@ -594,6 +604,7 @@ function RbuyJobs() {
             allIn = "Scientist";
         }
     }
+
     if (Rshouldshipfarm) {
         allIn = "Farmer";
     } else if (Rshouldhypofarm) {

@@ -535,18 +535,17 @@ function Rheirloomswap() {
 	}
 	//Swapping Staffs
 	if (getPageSetting('Rhsstaff') != false) {
-		let currentFarmMode = getPageSetting('ResourceToFarm');
 		switch (true) {
 			case ((Rshouldtimefarm == true && game.global.challengeActive == "Archaeology") && game.global.mapsActive == true && getPageSetting('RhsScienceStaff') != "undefined"):
 				EquipHeirloomByTypeAndSettingName('staff', 'RhsScienceStaff');
 				break;
-			case ((Rshouldtributefarm == true || Rshouldshipfarm == true || currentFarmMode === 'Food') && game.global.mapsActive == true && !!getPageSetting('Rhstributestaff')):
+			case ((Rshouldtributefarm == true || Rshouldshipfarm == true || ResourceToFarm === 'Food') && game.global.mapsActive == true && !!getPageSetting('Rhstributestaff')):
 				EquipHeirloomByTypeAndSettingName('staff', 'Rhstributestaff');
 				break;
-			case (currentFarmMode === 'Wood' && game.global.mapsActive == true && !!getPageSetting('RhsWoodStaff')):
+			case (ResourceToFarm === 'Wood' && game.global.mapsActive == true && !!getPageSetting('RhsWoodStaff')):
 				EquipHeirloomByTypeAndSettingName('staff', 'RhsWoodStaff');
 				break;
-			case (currentFarmMode === 'Metal' && game.global.mapsActive == true && !!getPageSetting('RhsMetalStaff')):
+			case (ResourceToFarm === 'Metal' && game.global.mapsActive == true && !!getPageSetting('RhsMetalStaff')):
 				EquipHeirloomByTypeAndSettingName('staff', 'RhsMetalStaff');
 				break;
 			case (getPageSetting('Rhsmapstaff') != "undefined" && game.global.mapsActive == true):

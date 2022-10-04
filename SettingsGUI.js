@@ -2594,7 +2594,6 @@ function toggleAutoMaps() {
     }
 }
 function toggleFarmMode(modeName) {
-    let currentFarmedResource = getPageSetting('ResourceToFarm');
     let metalBtn = document.getElementById('farmMetalBtn');
     let foodBtn = document.getElementById('farmFoodBtn');
     let woodBtn = document.getElementById('farmWoodBtn');
@@ -2619,6 +2618,6 @@ function toggleFarmMode(modeName) {
             break;
     }
 
-    setPageSetting('ResourceToFarm', modeName != currentFarmedResource ? modeName : '');
+    ResourceToFarm = modeName != currentFarmedResource ? modeName : '';
 
 }
