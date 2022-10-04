@@ -64,7 +64,7 @@ function automationMenuInit() {
     let farmButtonsRow = document.createElement("DIV");
     farmButtonsRow.setAttribute("class", "battleSideBtnContainer");
     farmButtonsRow.setAttribute('style', 'display: flex; flex-flow: row wrap; justify-content: space-around;');
-    farmFoodButton.setAttribute('onmouseover', 'tooltip(\"Resource Farming Buttons\", \"customText\",event, \"While active, will reassign all workers to the resource and equip the appropriate staff (if set in AT settings.) \"')
+    farmButtonsRow.setAttribute('onmouseover', 'tooltip(\"Resource Farming Buttons\", \"customText\",event, \"While active, will reassign all workers to the resource and equip the appropriate staff (if set in AT settings.) \"');
 
     let farmFoodButton = document.createElement("SPAN");
     farmFoodButton.setAttribute("class", "btn btn-danger");
