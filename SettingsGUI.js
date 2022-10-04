@@ -2619,5 +2619,6 @@ function toggleFarmMode(modeName) {
     }
 
     ResourceToFarm = modeName != ResourceToFarm ? modeName : '';
+    RbuyJobs();
 
 }
