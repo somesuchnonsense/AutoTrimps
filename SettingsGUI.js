@@ -68,7 +68,7 @@ function automationMenuInit() {
 
     let farmFoodButton = document.createElement("SPAN");
     farmFoodButton.setAttribute("class", "btn btn-danger");
-    farmFoodButton.setAttribute('style', 'flex:1;');
+    farmFoodButton.setAttribute('style', 'flex:1; text-align:center;');
     let farmFoodSymbol = document.createElement("SPAN");
     farmFoodSymbol.setAttribute('class', 'glyphicon glyphicon-apple');
     farmFoodButton.appendChild(farmFoodSymbol);
@@ -78,7 +78,7 @@ function automationMenuInit() {
 
     let farmWoodButton = document.createElement("SPAN");
     farmWoodButton.setAttribute("class", "btn btn-danger");
-    farmWoodButton.setAttribute('style', 'flex:1;');
+    farmWoodButton.setAttribute('style', 'flex:1; text-align:center;');
     let farmWoodSymbol = document.createElement("SPAN");
     farmWoodSymbol.setAttribute('class', 'glyphicon glyphicon-tree-deciduous');
     farmWoodButton.appendChild(farmWoodSymbol);
@@ -88,7 +88,7 @@ function automationMenuInit() {
 
     let farmMetalButton = document.createElement("SPAN");
     farmMetalButton.setAttribute("class", "btn btn-danger");
-    farmMetalButton.setAttribute('style', 'flex:1;');
+    farmMetalButton.setAttribute('style', 'flex:1; text-align:center;');
     let farmMetalSymbol = document.createElement("SPAN");
     farmMetalSymbol.setAttribute('class', 'icomoon icon-cubes');
     farmMetalButton.appendChild(farmMetalSymbol);
@@ -98,7 +98,7 @@ function automationMenuInit() {
 
     let farmScienceButton = document.createElement("SPAN");
     farmScienceButton.setAttribute("class", "btn btn-danger");
-    farmScienceButton.setAttribute('style', 'flex:1;');
+    farmScienceButton.setAttribute('style', 'flex:1; text-align:center;');
     let farmScienceSymbol = document.createElement("SPAN");
     farmScienceSymbol.setAttribute('class', 'icomoon icon-lab-flask');
     farmScienceButton.appendChild(farmScienceSymbol);
