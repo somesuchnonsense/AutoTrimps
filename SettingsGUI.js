@@ -2618,6 +2618,6 @@ function toggleFarmMode(modeName) {
             break;
     }
 
-    ResourceToFarm = modeName != currentFarmedResource ? modeName : '';
+    ResourceToFarm = modeName != ResourceToFarm ? modeName : '';
 
 }
