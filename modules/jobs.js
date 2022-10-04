@@ -556,13 +556,13 @@ function RbuyJobs() {
     var allIn = "";
     switch (ResourceToFarm) {
         case 'Food':
-            allin = 'Farmer';
+            allIn = 'Farmer';
             break;
         case 'Wood':
-            allin = 'Lumberjack';
+            allIn = 'Lumberjack';
             break;
         case 'Metal':
-            allin = 'Miner';
+            allIn = 'Miner';
             break;
     }
     if (Rshouldtimefarm) {

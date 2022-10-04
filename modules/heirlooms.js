@@ -541,12 +541,15 @@ function Rheirloomswap() {
 				break;
 			case ((Rshouldtributefarm == true || Rshouldshipfarm == true || ResourceToFarm === 'Food') && game.global.mapsActive == true && !!getPageSetting('Rhstributestaff')):
 				EquipHeirloomByTypeAndSettingName('staff', 'Rhstributestaff');
+				RbuyJobs();
 				break;
 			case (ResourceToFarm === 'Wood' && game.global.mapsActive == true && !!getPageSetting('RhsWoodStaff')):
 				EquipHeirloomByTypeAndSettingName('staff', 'RhsWoodStaff');
+				RbuyJobs();
 				break;
 			case (ResourceToFarm === 'Metal' && game.global.mapsActive == true && !!getPageSetting('RhsMetalStaff')):
 				EquipHeirloomByTypeAndSettingName('staff', 'RhsMetalStaff');
+				RbuyJobs();
 				break;
 			case (getPageSetting('Rhsmapstaff') != "undefined" && game.global.mapsActive == true):
 				EquipHeirloomByTypeAndSettingName('staff', 'Rhsmapstaff');
