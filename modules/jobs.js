@@ -564,6 +564,9 @@ function RbuyJobs() {
         case 'Metal':
             allIn = 'Miner';
             break;
+        case 'Science':
+            allIn = 'Scientist';
+            break;
     }
     if (Rshouldtimefarm) {
         var timefarmzone = getPageSetting('Rtimefarmzone');

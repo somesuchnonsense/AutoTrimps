@@ -124,14 +124,14 @@ function autogather3() {
 MODULES["gather"].RminScienceAmount = 200;
 
 function RmanualLabor2() {
-	
+
     //Vars
     var lowOnTraps = game.buildings.Trap.owned < 5;
     var trapTrimpsOK = getPageSetting('RTrapTrimps');
     var hasTurkimp = game.talents.turkimp2.purchased || game.global.turkimpTimer > 0;
     var needToTrap = (game.resources.trimps.max - game.resources.trimps.owned >= game.resources.trimps.max * 0.05) || (game.resources.trimps.getCurrentSend() > game.resources.trimps.owned - trimpsEffectivelyEmployed());
     var fresh = false;
-	
+
     //ULTRA FRESH
     if (!game.upgrades.Battle.done) {
         fresh = true;
@@ -173,33 +173,33 @@ function RmanualLabor2() {
         }
         return;
     }
-	
+
     //QUEST
     if (game.global.challengeActive == "Quest") {
         if (questcheck() == 10 || questcheck() == 20) {
             setGather('food');
-	}
-	if (questcheck() == 11 || questcheck() == 21) {
+        }
+        if (questcheck() == 11 || questcheck() == 21) {
             setGather('wood');
-	}
-	if (questcheck() == 12 || questcheck() == 22) {
+        }
+        if (questcheck() == 12 || questcheck() == 22) {
             setGather('metal');
-	}
-	if (questcheck() == 14 || questcheck() == 24) {
+        }
+        if (questcheck() == 14 || questcheck() == 24) {
             setGather('science');
-	}
+        }
     }
-	
+
     //HYPO
     else if (Rshouldhypofarm) {
         setGather('wood');
     }
-	
+
     //SHIP
     else if (Rshouldshipfarm) {
         setGather('food');
     }
-	
+
     //TIMEFARM
     else if (Rshouldtimefarm) {
         var timefarmzone = getPageSetting('Rtimefarmzone');
@@ -216,8 +216,8 @@ function RmanualLabor2() {
         if (autoTrimpSettings.Rtimefarmgather.value[timefarmlevelindex] == "science") {
             setGather('science');
         }
-    } 
-	
+    }
+
     //DAILY TIMEFARM
     else if (Rdshouldtimefarm) {
         var dtimefarmzone = getPageSetting('Rdtimefarmzone');
@@ -234,8 +234,8 @@ function RmanualLabor2() {
         if (autoTrimpSettings.Rdtimefarmgather.value[dtimefarmlevelindex] == "science") {
             setGather('science');
         }
-    } 
-	
+    }
+
     //TRIBUTE
     else if (Rshouldtributefarm) {
         var tributefarmzone = getPageSetting('Rtributefarmzone');
@@ -253,7 +253,23 @@ function RmanualLabor2() {
             setGather('science');
         }
     }
-	
+    else if (!!ResourceToFarm) {
+        switch (ResourceToFarm) {
+            case 'Food':
+                setGather('food');
+                break;
+            case 'Wood':
+                setGather('wood');
+                break;
+            case 'Metal':
+                setGather('Metal');
+                break;
+            case 'Science':
+                setGather('science');
+                break;
+        }
+    }
+
     //MISC.
     else if (getPageSetting('RManualGather2') != 2 && game.resources.science.owned < MODULES["gather"].RminScienceAmount && document.getElementById('scienceCollectBtn').style.display != 'none' && document.getElementById('science').style.visibility != 'hidden') {
         setGather('science');
@@ -288,9 +304,9 @@ function RmanualLabor2() {
         } else if (game.buildings.Trap.owned > 0)
             setGather('trimps');
     }
-	
+
     //ALL FAIL
     else {
-	setGather('metal');
-    }	
+        setGather('metal');
+    }
 }

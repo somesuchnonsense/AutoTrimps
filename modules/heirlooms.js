@@ -536,7 +536,7 @@ function Rheirloomswap() {
 	//Swapping Staffs
 	if (getPageSetting('Rhsstaff') != false) {
 		switch (true) {
-			case ((Rshouldtimefarm == true && game.global.challengeActive == "Archaeology") && game.global.mapsActive == true && getPageSetting('RhsScienceStaff') != "undefined"):
+			case (((Rshouldtimefarm == true && game.global.challengeActive == "Archaeology") || ResourceToFarm === 'Science') && game.global.mapsActive == true && getPageSetting('RhsScienceStaff') != "undefined"):
 				EquipHeirloomByTypeAndSettingName('staff', 'RhsScienceStaff');
 				break;
 			case ((Rshouldtributefarm == true || Rshouldshipfarm == true || ResourceToFarm === 'Food') && game.global.mapsActive == true && getPageSetting('Rhstributestaff') != "undefined"):

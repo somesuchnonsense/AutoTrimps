@@ -63,9 +63,11 @@ function automationMenuInit() {
     let extraMapBtnsColumns = document.getElementById('extraMapBtns');
     let farmButtonsRow = document.createElement("DIV");
     farmButtonsRow.setAttribute("class", "battleSideBtnContainer");
+    farmButtonsRow.setAttribute('style', 'display: flex; flex-flow: row wrap; justify-content: space-around;');
 
     let farmFoodButton = document.createElement("SPAN");
     farmFoodButton.setAttribute("class", "btn btn-danger");
+    farmFoodButton.setAttribute('style', 'flex:1;');
     let farmFoodSymbol = document.createElement("SPAN");
     farmFoodSymbol.setAttribute('class', 'glyphicon glyphicon-apple');
     farmFoodButton.appendChild(farmFoodSymbol);
@@ -75,6 +77,7 @@ function automationMenuInit() {
 
     let farmWoodButton = document.createElement("SPAN");
     farmWoodButton.setAttribute("class", "btn btn-danger");
+    farmWoodButton.setAttribute('style', 'flex:1;');
     let farmWoodSymbol = document.createElement("SPAN");
     farmWoodSymbol.setAttribute('class', 'glyphicon glyphicon-tree-deciduous');
     farmWoodButton.appendChild(farmWoodSymbol);
@@ -84,12 +87,23 @@ function automationMenuInit() {
 
     let farmMetalButton = document.createElement("SPAN");
     farmMetalButton.setAttribute("class", "btn btn-danger");
+    farmMetalButton.setAttribute('style', 'flex:1;');
     let farmMetalSymbol = document.createElement("SPAN");
     farmMetalSymbol.setAttribute('class', 'icomoon icon-cubes');
     farmMetalButton.appendChild(farmMetalSymbol);
     farmMetalButton.setAttribute("onClick", "toggleFarmMode('Metal')");
     farmMetalButton.setAttribute('id', 'farmMetalBtn');
     farmButtonsRow.appendChild(farmMetalButton);
+
+    let farmScienceButton = document.createElement("SPAN");
+    farmScienceButton.setAttribute("class", "btn btn-danger");
+    farmScienceButton.setAttribute('style', 'flex:1;');
+    let farmScienceSymbol = document.createElement("SPAN");
+    farmScienceSymbol.setAttribute('class', 'icomoon icon-lab-flask');
+    farmScienceButton.appendChild(farmScienceSymbol);
+    farmScienceButton.setAttribute("onClick", "toggleFarmMode('Science')");
+    farmScienceButton.setAttribute('id', 'farmScienceBtn');
+    farmButtonsRow.appendChild(farmScienceButton);
 
     extraMapBtnsColumns.appendChild(farmButtonsRow);
 }
@@ -2603,18 +2617,28 @@ function toggleFarmMode(modeName) {
             metalBtn.classList.toggle("btn-danger");
             woodBtn.setAttribute('class', 'btn-danger');
             foodBtn.setAttribute('class', 'btn-danger');
+            scienceBtn.setAttribute('class', 'btn-danger');
             break;
         case 'Wood':
             woodBtn.classList.toggle("btn-success");
             woodBtn.classList.toggle("btn-danger");
             metalBtn.setAttribute('class', 'btn-danger');
             foodBtn.setAttribute('class', 'btn-danger');
+            scienceBtn.setAttribute('class', 'btn-danger');
             break;
         case 'Food':
             foodBtn.classList.toggle("btn-success");
             foodBtn.classList.toggle("btn-danger");
             woodBtn.setAttribute('class', 'btn-danger');
             metalBtn.setAttribute('class', 'btn-danger');
+            scienceBtn.setAttribute('class', 'btn-danger');
+            break;
+        case 'Science':
+            scienceBtn.classList.toggle("btn-success");
+            scienceBtn.classList.toggle("btn-danger");
+            woodBtn.setAttribute('class', 'btn-danger');
+            metalBtn.setAttribute('class', 'btn-danger');
+            foodBtn.setAttribute('class', 'btn-danger');
             break;
     }
 
