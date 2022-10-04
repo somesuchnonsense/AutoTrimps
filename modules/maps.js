@@ -2876,7 +2876,7 @@ function RautoMap() {
                 }
                 updateMapCost();
             }
-            if (Rshouldalchfarm && !Rshouldhypofarm && !Rshouldtimefarm && !Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest && !Rshouldequipfarm && !Rshouldshipfarm) {
+            else if (Rshouldalchfarm && !Rshouldhypofarm && !Rshouldtimefarm && !Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest && !Rshouldequipfarm && !Rshouldshipfarm) {
                 var alchfragcheck = true;
                 if (getPageSetting('Ralchfarmfrag') == true) {
                     if (alchfrag() == true) {
@@ -2957,7 +2957,7 @@ function RautoMap() {
                 }
                 updateMapCost();
             }
-            if (Rshouldhypofarm && !Rshouldtimefarm && !Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest && !Rshouldequipfarm) {
+            else if (Rshouldhypofarm && !Rshouldtimefarm && !Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest && !Rshouldequipfarm) {
                 var hypofragcheck = true;
                 if (getPageSetting('Rhypofarmfrag') == true) {
                     if (hypofrag() == true) {
@@ -3038,7 +3038,7 @@ function RautoMap() {
                 }
                 updateMapCost();
             }
-            if (Rshouldshipfarm && !Rshouldtimefarm && !Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest && !Rshouldequipfarm) {
+            else if (Rshouldshipfarm && !Rshouldtimefarm && !Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest && !Rshouldequipfarm) {
                 var shipfragcheck = true;
                 document.getElementById("advSpecialSelect").value = "lsc";
                 if (getPageSetting('Rshipfarmfrag') == true) {
@@ -3120,7 +3120,7 @@ function RautoMap() {
 
                 updateMapCost();
             }
-            if (Rshouldtimefarm && !Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest) {
+            else if (Rshouldtimefarm && !Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest) {
                 if (getPageSetting('Rtimefarmlevel') != 0) {
 
                     var timefarmlevel = getPageSetting('Rtimefarmlevel');
@@ -3141,7 +3141,7 @@ function RautoMap() {
                 document.getElementById("advSpecialSelect").value = autoTrimpSettings.Rtimefarmspecial.value[timefarmlevelindex];
                 updateMapCost();
             }
-            if (Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest) {
+            else if (Rdshouldtimefarm && !Rshouldtributefarm && !Rshoulddoquest) {
                 if (getPageSetting('Rdtimefarmlevel') != 0) {
 
                     var dtimefarmlevel = getPageSetting('Rdtimefarmlevel');
@@ -3162,7 +3162,7 @@ function RautoMap() {
                 document.getElementById("advSpecialSelect").value = autoTrimpSettings.Rdtimefarmspecial.value[dtimefarmlevelindex];
                 updateMapCost();
             }
-            if (Rshouldtributefarm && !Rshoulddoquest) {
+            else if (Rshouldtributefarm && !Rshoulddoquest) {
                 if (getPageSetting('Rtributefarmlevel') != 0) {
 
                     var tributefarmlevel = getPageSetting('Rtributefarmlevel');
@@ -3183,100 +3183,104 @@ function RautoMap() {
                 document.getElementById("advSpecialSelect").value = autoTrimpSettings.Rtributespecialselection.value[tributefarmlevelindex];
                 updateMapCost();
             }
-            if (Rshoulddoquest) {
+            else if (Rshoulddoquest) {
                 biomeAdvMapsSelect.value = "Plentiful";
-                if (Rshoulddoquest == 4) {
-                    document.getElementById("advSpecialSelect").value = "hc";
-                    updateMapCost();
-                    if (updateMapCost(true) > game.resources.fragments.owned) {
+
+                switch (Rshoulddoquest) {
+                    case 4:
+                        document.getElementById("advSpecialSelect").value = "hc";
+                        updateMapCost();
+                        if (updateMapCost(true) > game.resources.fragments.owned) {
+                            document.getElementById("advSpecialSelect").value = "fa";
+                            updateMapCost();
+                            if (updateMapCost(true) > game.resources.fragments.owned) {
+                                document.getElementById("advSpecialSelect").value = 0;
+                                updateMapCost();
+                            }
+                        }
+                        break;
+                    case 7:
+                        document.getElementById("advSpecialSelect").value = "hc";
+                        updateMapCost();
+                        if (updateMapCost(true) > game.resources.fragments.owned) {
+                            document.getElementById("advSpecialSelect").value = "lc";
+                            updateMapCost();
+                            if (updateMapCost(true) > game.resources.fragments.owned) {
+                                document.getElementById("advSpecialSelect").value = "fa";
+                                updateMapCost();
+                                if (updateMapCost(true) > game.resources.fragments.owned) {
+                                    document.getElementById("advSpecialSelect").value = 0;
+                                    updateMapCost();
+                                }
+                            }
+                        }
+                        break;
+                    case 10:
+                        document.getElementById("advSpecialSelect").value = "lsc";
+                        updateMapCost();
+                        if (updateMapCost(true) > game.resources.fragments.owned) {
+                            document.getElementById("advSpecialSelect").value = "ssc";
+                            updateMapCost();
+                            if (updateMapCost(true) > game.resources.fragments.owned) {
+                                document.getElementById("advSpecialSelect").value = "fa";
+                                updateMapCost();
+                                if (updateMapCost(true) > game.resources.fragments.owned) {
+                                    document.getElementById("advSpecialSelect").value = 0;
+                                    updateMapCost();
+                                }
+                            }
+                        }
+                        break;
+                    case 11:
+                        document.getElementById("advSpecialSelect").value = "lwc";
+                        updateMapCost();
+                        if (updateMapCost(true) > game.resources.fragments.owned) {
+                            document.getElementById("advSpecialSelect").value = "swc";
+                            updateMapCost();
+                            if (updateMapCost(true) > game.resources.fragments.owned) {
+                                document.getElementById("advSpecialSelect").value = "fa";
+                                updateMapCost();
+                                if (updateMapCost(true) > game.resources.fragments.owned) {
+                                    document.getElementById("advSpecialSelect").value = 0;
+                                    updateMapCost();
+                                }
+                            }
+                        }
+                        break;
+                    case 12:
+                        document.getElementById("advSpecialSelect").value = "lmc";
+                        updateMapCost();
+                        if (updateMapCost(true) > game.resources.fragments.owned) {
+                            document.getElementById("advSpecialSelect").value = "smc";
+                            updateMapCost();
+                            if (updateMapCost(true) > game.resources.fragments.owned) {
+                                document.getElementById("advSpecialSelect").value = "fa";
+                                updateMapCost();
+                                if (updateMapCost(true) > game.resources.fragments.owned) {
+                                    document.getElementById("advSpecialSelect").value = 0;
+                                    updateMapCost();
+                                }
+                            }
+                        }
+                        break;
+                    case 13:
                         document.getElementById("advSpecialSelect").value = "fa";
                         updateMapCost();
                         if (updateMapCost(true) > game.resources.fragments.owned) {
                             document.getElementById("advSpecialSelect").value = 0;
                             updateMapCost();
                         }
-                    }
-                }
-                if (Rshoulddoquest == 7) {
-                    document.getElementById("advSpecialSelect").value = "hc";
-                    updateMapCost();
-                    if (updateMapCost(true) > game.resources.fragments.owned) {
-                        document.getElementById("advSpecialSelect").value = "lc";
+                        break;
+                    case 14:
+                        document.getElementById("advSpecialSelect").value = "fa";
                         updateMapCost();
                         if (updateMapCost(true) > game.resources.fragments.owned) {
-                            document.getElementById("advSpecialSelect").value = "fa";
+                            document.getElementById("advSpecialSelect").value = 0;
                             updateMapCost();
-                            if (updateMapCost(true) > game.resources.fragments.owned) {
-                                document.getElementById("advSpecialSelect").value = 0;
-                                updateMapCost();
-                            }
                         }
-                    }
+                        break;
                 }
-                if (Rshoulddoquest == 10) {
-                    document.getElementById("advSpecialSelect").value = "lsc";
-                    updateMapCost();
-                    if (updateMapCost(true) > game.resources.fragments.owned) {
-                        document.getElementById("advSpecialSelect").value = "ssc";
-                        updateMapCost();
-                        if (updateMapCost(true) > game.resources.fragments.owned) {
-                            document.getElementById("advSpecialSelect").value = "fa";
-                            updateMapCost();
-                            if (updateMapCost(true) > game.resources.fragments.owned) {
-                                document.getElementById("advSpecialSelect").value = 0;
-                                updateMapCost();
-                            }
-                        }
-                    }
-                }
-                if (Rshoulddoquest == 11) {
-                    document.getElementById("advSpecialSelect").value = "lwc";
-                    updateMapCost();
-                    if (updateMapCost(true) > game.resources.fragments.owned) {
-                        document.getElementById("advSpecialSelect").value = "swc";
-                        updateMapCost();
-                        if (updateMapCost(true) > game.resources.fragments.owned) {
-                            document.getElementById("advSpecialSelect").value = "fa";
-                            updateMapCost();
-                            if (updateMapCost(true) > game.resources.fragments.owned) {
-                                document.getElementById("advSpecialSelect").value = 0;
-                                updateMapCost();
-                            }
-                        }
-                    }
-                }
-                if (Rshoulddoquest == 12) {
-                    document.getElementById("advSpecialSelect").value = "lmc";
-                    updateMapCost();
-                    if (updateMapCost(true) > game.resources.fragments.owned) {
-                        document.getElementById("advSpecialSelect").value = "smc";
-                        updateMapCost();
-                        if (updateMapCost(true) > game.resources.fragments.owned) {
-                            document.getElementById("advSpecialSelect").value = "fa";
-                            updateMapCost();
-                            if (updateMapCost(true) > game.resources.fragments.owned) {
-                                document.getElementById("advSpecialSelect").value = 0;
-                                updateMapCost();
-                            }
-                        }
-                    }
-                }
-                if (Rshoulddoquest == 13) {
-                    document.getElementById("advSpecialSelect").value = "fa";
-                    updateMapCost();
-                    if (updateMapCost(true) > game.resources.fragments.owned) {
-                        document.getElementById("advSpecialSelect").value = 0;
-                        updateMapCost();
-                    }
-                }
-                if (Rshoulddoquest == 14) {
-                    document.getElementById("advSpecialSelect").value = "fa";
-                    updateMapCost();
-                    if (updateMapCost(true) > game.resources.fragments.owned) {
-                        document.getElementById("advSpecialSelect").value = 0;
-                        updateMapCost();
-                    }
-                }
+
                 if (updateMapCost(true) > game.resources.fragments.owned) {
                     biomeAdvMapsSelect.value = "Random";
                     updateMapCost();
