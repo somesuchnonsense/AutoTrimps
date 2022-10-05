@@ -529,7 +529,7 @@ function Rheirloomswap() {
 		if (getPageSetting('Rhsz') > 0 && game.global.world < getPageSetting('Rhsz')) {
 			Rhsequip1();
 		}
-		if (getPageSetting('Rhsz') > 0 && game.global.world >= getPageSetting('Rhsz')) {
+		if ((getPageSetting('Rhsz') > 0 && game.global.world >= getPageSetting('Rhsz')) || (getPageSetting('Rhs2UseInMaps') && game.global.mapsActive == true)) {
 			Rhsequip2();
 		}
 	}
