@@ -1045,7 +1045,7 @@ function initializeAllSettings() {
     createSetting('Rhs2UseInMaps', 'Use in maps?', 'Toggle to use HS: Second in maps', 'boolean', false, null, 'Heirlooms');
 
     //Staff Swapping
-    document.getElementById('Rhs2').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('Rhs2UseInMaps').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rhsstaff', 'Staffs', 'Toggle to swap Staffs', 'boolean', false, null, 'Heirlooms');
     createSetting('Rhsworldstaff', 'World', '<b>World Staff</b><br><br>Enter the name of your world staff.', 'textValue', 'undefined', null, 'Heirlooms');
     createSetting('Rhsmapstaff', 'Map', '<b>Mapping staff</b><br><br>Enter the name of your mapping staff.', 'textValue', 'undefined', null, 'Heirlooms');
