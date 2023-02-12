@@ -395,9 +395,9 @@ function initializeAllSettings() {
 
     //Windstacking
     document.getElementById('dPreSpireNurseries').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('use3daily', 'Daily Windstacking', '<b> This must be on for Daily windstacking settings to appear!</b> Overrides your Autostance settings to use the WS stance on Dailies. ', 'boolean', false, null, 'Daily');
+    createSetting('use3daily', 'Daily Windstacking', '<b> This must be on for Daily windstacking settings to appear!</b> Overrides your Autostance settings to use the WS stance on Dailies. Make sure Windstack HD is set otherwise this does nothing. ', 'boolean', false, null, 'Daily');
     createSetting('dWindStackingMin', 'Daily Windstack Min Zone', 'For use with Windstacking Stance, enables windstacking in zones above and inclusive of the zone set for dailys. (Get specified windstacks then change to D, kill bad guy, then repeat). This is designed to force S use until you have specified stacks in wind zones, overriding scryer settings. All windstack settings apart from Daily WS MAX work off this setting. ', 'value', '-1', null, 'Daily');
-    createSetting('dWindStackingMinHD', 'Daily Windstack H:D', 'For use with Windstacking Stance in Dailies, fiddle with this to maximise your stacks in wind zones for Dailies. If H:D is above this setting it will not use W stance. If it is below it will. ', 'value', '-1', null, 'Daily');
+    createSetting('dWindStackingMinHD', 'Daily Windstack H:D', 'For use with Windstacking Stance in Dailies, fiddle with this to maximise your stacks in wind zones for Dailies. If H:D is above this setting it will not use W stance. If it is below it will. Use something like 10 decillion if you just want to use W stance. ', 'value', '1e33', null, 'Daily');
     createSetting('dWindStackingMax', 'Daily Windstack Stacks', 'For use with Windstacking Stance in Dailies. Amount of windstacks to obtain before switching to D stance. Default is 200, but I recommend anywhere between 175-190. In Wind Enlightenment it will add 100 stacks to your total automatically. So if this setting is 200 It will assume you want 300 stacks instead during enlightenment. ', 'value', '200', null, 'Daily');
     createSetting('dwindcutoff', 'Daily Wind Damage Cutoff', 'Set this value to optimise your windstacking in dailys. Can work without Windstacking Stance, but not recommended. AT normally uses 4 as its cutoff. I.e if the cutoff is above 4 it will buy max equipment. If you set this to 160, it will not get more damage till you are above x160. Essentially, the higher the value, the less damage AT wants to get, this will enable you to windstack to incredibly high amounts. -1 to disable/go back to default. Must set your windstacking min zone to use. ', 'value', '-1', null, 'Daily');
     createSetting('dwindcutoffmap', 'Daily Wind Map Cutoff', 'Set this value to optimise your windstacking in dailys. Can work without Windstacking Stance, but not recommended. AT normally uses 4 as its cutoff. I.e if the cutoff is above 4 it will do map bonus. If you set this to 160, it will not do maps till you are above x160. Essentially, the higher the value, the less damage AT wants to get, this will enable you to windstack to incredibly high amounts. -1 to disable/go back to default. Must set your windstacking min zone to use. ', 'value', '-1', null, 'Daily');
@@ -562,8 +562,13 @@ function initializeAllSettings() {
     //Line 3
     createSetting('FirstGigastation', 'First Gigastation', 'How many warpstations to buy before your first gigastation', 'value', '20', null, "Buildings");
     createSetting('DeltaGigastation', 'Delta Gigastation', '<b>YOU MUST HAVE BUY UPGRADES ENABLED!</b><br> How many extra warpstations to buy for each gigastation. Supports decimal values. For example 2.5 will buy +2/+3/+2/+3...', 'value', '2', null, "Buildings");
+    createSetting('AutoGigas', 'Auto Gigas', "Advanced. <br>If enabled, AT will buy its first Gigastation if: <br>A) Has more than 2 Warps & <br>B) Can't afford more Coords & <br>C) (Only if Custom Delta Factor > 20) Lacking Health or Damage & <br>D) (Only if Custom Delta Factor > 20) Has run at least 1 map stack or <br>E) If forced to by using the firstGiga(true) command in the console. <br>Then, it'll calculate the delta based on your Custom Delta Factor and your Auto Portal/VM zone (whichever is higher), or Daily Auto Portal/VM zone, or C2 zone, or Custom AutoGiga Zone.", 'boolean', 'true', null, 'Buildings');
+    createSetting('CustomTargetZone', 'Custom Target Zone', 'To be used with Auto Gigas. <br>The zone to be used as a the target zone when calculating the Auto Gigas delta. <br>Values below 60 will be discarded.', 'value', '-1', null, "Buildings");
+    createSetting('CustomDeltaFactor', 'Custom Delta Factor', 'Advanced. To be used with Auto Gigas. <br>This setting is used to calculate a better Delta. Think of this setting as how long your target zone takes to complete divided by the zone you bought your first giga in. <br>Basically, a higher number means a higher delta. Values below 1 will default to 10. <br><b>Recommended: 1-2 for very quick runs. 5-10 for regular runs where you slow down at the end. 20-100+ for very pushy runs.</b>', 'value', '-1', null, "Buildings");
     createSetting('WarpstationWall3', 'Warpstation Wall', 'Conserves Metal. Only buys 1 Warpstation when you can afford <b>X</b> warpstations metal cost (at the first one\'s price, simple math). -1, 0, 1 = disable. In other words, only allows warps that cost less than 1/nth your currently owned metal. (to save metal for prestiges)', 'value', -1, null, 'Buildings');
     createSetting('MaxNursery', 'Max Nurseries', 'Advanced. Recommend: -1 until you reach Magma (z230+)', 'value', '-1', null, "Buildings");
+
+    //Line 4
     createSetting('NoNurseriesUntil', 'No Nurseries Until z', 'Builds Nurseries starting from this zone. -1 to build from when they are unlocked. ', 'value', '-1', null, 'Buildings');
 
     //RBuildings
@@ -616,12 +621,12 @@ function initializeAllSettings() {
 
     //Ships
     document.getElementById('RMaxExplorers').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('Rshipfarmon', 'Ship Farming', 'Turn Ship Farming off or on. ', 'boolean', 'false', null, "Jobs");
+    createSetting('Rshipfarmon', 'Ship Farming', 'Turn Ship Farming off or on. You need to have unlocked Large Savory Cache to use this. If you have not I would recommend Time Farm instead. ', 'boolean', 'false', null, "Jobs");
     createSetting('Rshipfarmzone', 'SF: Zone', 'Farms for specified worshippers in SF: Amount at zone according to this settings value. Can use 59,61,62. ', 'multiValue', [-1], null, 'Jobs');
     createSetting('Rshipfarmcell', 'SF: Cell', 'Ship Farm at this Cell. -1 to run them at the default value, which is 1. ', 'value', '-1', null, 'Jobs');
     createSetting('Rshipfarmamount', 'SF: Amount', 'How many Worshippers to farm up to at zone specified in SF. Can use 50,45,40. These values should match up to your SF zones. If using SF and SF: Amount examples (59 and 50 respectively) it will farm at z59 up to 50 Worshippers. Just use one 50 if you want it to farm to 50 everytime. ', 'multiValue', [-1], null, 'Jobs');
     createSetting('Rshipfarmlevel', 'SF: Map Level', 'What map level to use for SF. Can use -1,1,2. -1 to use a level down from world (Map Reducer mastery gives loot equal to world one level down), 0 to use world, 1 etc to use +maps. Using 0 by itself will use global level for all maps. ', 'multiValue', [0], null, 'Jobs');
-    createSetting('Rshipfarmfrag', 'SF: Frags', 'Turn this on to farm fragments if you cannot afford the map you have selected for SF. ', 'boolean', 'false', null, 'Jobs');
+    createSetting('Rshipfarmfrag', 'SF: Frags', '**Ship farming will create infinite maps if this isnt on** <br>Turn this on to farm fragments if you cannot afford the map you have selected for SF. ', 'boolean', 'false', null, 'Jobs');
 
 
     //Gear
@@ -676,7 +681,8 @@ function initializeAllSettings() {
     createSetting('AMUprison', 'AMU: Prison', 'Turn on to run this map every run. ', 'boolean', false, null, 'Maps');
     createSetting('AMUbw', 'AMU: BW', 'Turn on to run this map every run. ', 'boolean', false, null, 'Maps');
     createSetting('AMUstar', 'AMU: Imploding Star', 'Turn on to run this map every run. ', 'boolean', false, null, 'Maps');
-    createSetting('automapsportal', 'AM Portal', 'Makes sure Auto Maps is on after portalling. Turn this off to disable this and remember your choice. ', 'boolean', true, null, 'Maps');
+    createSetting('automapsportal', 'AM Portal', 'Makes sure Auto Maps is on on portal. ', 'boolean', false, null, 'Maps');
+    createSetting('automapsalways', 'AM Always', 'Makes sure Auto Maps is on always. ', 'boolean', false, null, 'Maps');
     document.getElementById('automapsportal').parentNode.insertAdjacentHTML('afterend', '<br>');
 
     //Line 2
@@ -721,7 +727,8 @@ function initializeAllSettings() {
 
     //Line 1
     createSetting('RAutoMaps', ["Auto Maps Off", "Auto Maps On", "Auto Maps No Unique"], 'Automaps. The no unique setting will not run unique maps such as dimensions of rage. Recommended ON. Do not use MaZ, it will not work. ', 'multitoggle', 1, null, "Maps");
-    createSetting('Rautomapsportal', 'AM Portal', 'Makes sure Auto Maps is on after portalling. Turn this off to disable this and remember your choice. ', 'boolean', true, null, 'Maps');
+    createSetting('Rautomapsportal', 'AM Portal', 'Makes sure Auto Maps is on portal. ', 'boolean', false, null, 'Maps');
+    createSetting('Rautomapsalways', 'AM Always', 'Makes sure Auto Maps is on always. ', 'boolean', false, null, 'Maps');
     createSetting('Rmapselection', 'Map Selection', 'Select which you prefer to use. Recommend Plentiful (Gardens) if you have unlocked it. ', 'dropdown', 'Mountain', ["Random", "Mountain", "Forest", "Sea", "Depths", "Plentiful", "Farmlands"], 'Maps');
     createSetting('RMaxMapBonusAfterZone', 'Max MapBonus After', 'Always gets Max Map Bonus from this zone on. (inclusive and after).<br><b>NOTE:</b> Set -1 to disable entirely (default). Set 0 to use it always. ', 'value', '-1', null, 'Maps');
     createSetting('RMaxMapBonuslimit', 'Max MapBonus Limit', 'Limit the amount of Map Bonuses you get. Default is 10. ', 'value', '10', null, 'Maps');
@@ -750,8 +757,16 @@ function initializeAllSettings() {
     createSetting('Rtimefarmspecial', 'TF: Special Selection', 'special', 'textValue', 'undefined', null, 'Maps');
     createSetting('Rtimefarmgather', 'TF: Gather Selection', 'gather', 'textValue', 'undefined', null, 'Maps');
 
-    //Tributefarm
+    //Smithyfarm
     document.getElementById('Rtimefarmgather').parentNode.insertAdjacentHTML('afterend', '<br>');
+    createSetting('Rsmithyfarm', 'Smithy Farm', 'Turn this on if you want to use Smithy Farming. ', 'boolean', false, null, 'Maps');
+    createSetting('Rsmithyfarmmaz', 'Smithy Farm Settings', 'Click to open the Smithy Farm settings. <br> <b>Zone:</b> What zone to start smithy farming.<br> <b>Cell:</b> What cell to start smithy farming at. <br> <b>Smithys:</b> How many smithys you want to have at that zone. <br> <b>Example:</b> If you put Zone: 60\, Cell: 10\, Smithys: 2\, you will farm at zone 60 at cell 10 for 2 total smithies in an autogenerated map that will fill your resource needs\, gather and job appropriately', 'infoclick', false, null, 'Maps');
+    createSetting('Rsmithyfarmzone', 'SF: Zone', 'zone', 'multiValue', [-1], null, 'Maps');
+    createSetting('Rsmithyfarmcell', 'SF: Cell', 'cell', 'multiValue', [-1], null, 'Maps');
+    createSetting('Rsmithyfarmamount', 'SF: Smithys', 'smithys', 'multiValue', [-1], null, 'Maps');
+
+    //Tributefarm
+    document.getElementById('Rsmithyfarmamount').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rtributefarm', 'Tribute Farm', 'Turn this on if you want to use Tribute Farming. ', 'boolean', false, null, 'Maps');
     createSetting('Rtributefarmmaz', 'Tribute Farm Settings', 'Click to open the Tribute Farm settings. <br> <b>Zone:</b> What zone to start tribute farming. It will also put all your workers into farming. <br> <b>Cell:</b> What cell to start tribute farming at. <br> <b>Tributes:</b> How many tributes to farm. <br> <b>Level:</b> How many map levels above your zone to use. <br> <b>Map:</b> What kind of map you want to use. <br> <b>Special:</b> What type of special you want to use. <br> <b>Gather:</b> What resource you would like to gather. <br> <b>Example:</b> If you put Zone: 40\, Cell: 10\, Tributes: 1000\, Level: 5\, Map: Gardens\, Special: Large Savory Cache\, Gather: Food\, you will farm at zone 40 at cell 10 for 1000 tributes in a +5 Gardens map that has a Large Savory Cache while gathering food. ', 'infoclick', false, null, 'Maps');
     createSetting('Rtributefarmzone', 'TrF: Zone', 'zone', 'multiValue', [-1], null, 'Maps');
@@ -877,9 +892,10 @@ function initializeAllSettings() {
     createSetting('Rchallengehidepanda', 'Pandemonium', 'Set this on if you wish to hide the Pandemonium challenge settings. ', 'boolean', false, null, 'Challenges');
     createSetting('Rchallengehidealchemy', 'Alchemy', 'Set this on if you wish to hide the Alchemy challenge settings. ', 'boolean', false, null, 'Challenges');
     createSetting('Rchallengehidehypothermia', 'Hypothermia', 'Set this on if you wish to hide the Hypothermia challenge settings. ', 'boolean', false, null, 'Challenges');
+    createSetting('Rchallengehidedeso', 'Desolation', 'Set this on if you wish to hide the Desolation challenge settings. ', 'boolean', false, null, 'Challenges');
 
     //Quagmire
-    document.getElementById('Rchallengehidehypothermia').parentNode.insertAdjacentHTML('afterend', '<br>');
+    document.getElementById('Rchallengehidedeso').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('Rblackbog', 'Quagmire', 'Enable Bog Running for Quagmire. ', 'boolean', false, null, 'Challenges');
     createSetting('Rblackbogmaz', 'Quagmire Settings', 'Click to open the Quagmire settings. <br> <b>Zone:</b> What zone to start bogging. <br> <b>Black Bogs:</b> How many Black Bogs to at specified zones. <br> <b>Example:</b> If you put Zone: 40\, Black Bogs: 10\, you will run 10 black bogs at zone 40. ', 'infoclick', false, null, 'Challenges');
     createSetting('Rblackbogzone', 'Zone', 'zone', 'multiValue', [-1], null, 'Challenges');
@@ -949,7 +965,13 @@ function initializeAllSettings() {
     createSetting('Rhypofarmfrag', 'HF: Frags', 'Turn this on to farm fragments if you cannot afford the map you have selected for HF. ', 'boolean', 'false', null, 'Challenges');
     createSetting('Rhypocastle', 'Frozen Castle', 'What zone you wish you run frozen castle on to complete the challenge. Will run castle after voids so make sure thats set up right. ', 'value', '-1', null, 'Challenges');
     createSetting('Rhypovoids', 'After Voids', 'Only run Frozen castle after all voids have been completed. ', 'boolean', true, null, 'Challenges');
-    createSetting('Rhypostorage', 'Storage', 'Turn this on to disable buying sheds unless you need more wood for your HF: Bonfire target price (AT AutoBuildings). Essentially this means you wont get accidently bonfires but you may lose out on smithies and shield prestiges. If you use vanilla autobuildings this setting is pointless. ', 'boolean', 'false', null, 'Challenges');
+    createSetting('Rhypostorage', 'Storage', 'Turn this on to disable buying sheds unless you need more wood for your HF: Bonfire target price (AT AutoBuildings). Essentially this means you wont get accidently bonfires but you may lose out on smithies and shield prestiges. If you use vanilla autobuildings this setting is pointless. Disables AutoStorage until the first Bonfire farm zone that you reach during the challenge.', 'boolean', 'false', null, 'Challenges');
+
+    //Desolation
+    createSetting('Rdesoon', 'Desolation', 'Turn on Desolation settings. This also controls the entireity of Desolation settings. If you turn this off it will not do anything in Desolation. ', 'boolean', 'false', null, 'Challenges');
+    createSetting('Rdesozone', 'D: Zone', 'What zone to start D: H:D and D: Multiplier. ', 'value', '-1', null, 'Challenges');
+    createSetting('RdesoHD', 'D: H:D', 'What H:D to use inside Desolation. ', 'value', '-1', null, 'Challenges');
+    createSetting('Rdesomult', 'D: Multiplier', 'Starting from the zone above D: Zone, this setting will multiply the H:D you have set in D: H:D. So if D: Zone was 100, D: H:D was 10, D: Multiplier was 1.2, at z101 your H:D target will be 12, then at z102 it will be 14.4 and so on. This way you can account for the zones getting stronger and you will not waste time farming for a really low H:D. ', 'value', '-1', null, 'Challenges');
 
 
 
@@ -1009,12 +1031,12 @@ function initializeAllSettings() {
     //Magma
 
     createSetting('UseAutoGen', 'Auto Generator', 'Turn this on to use these settings. ', 'boolean', false, null, 'Magma');
-    createSetting('beforegen', ['Gain Mi', 'Gain Fuel', 'Hybrid'], '<b>MODE BEFORE FUELING: </b>Which mode to use before fueling. This is the mode which the generator will use if you fuel after z230. ', 'multitoggle', 1, null, 'Magma');
+    createSetting('beforegen', ['Gain Mi', 'Gain Fuel', 'Hybrid'], '<b>MODE BEFORE FUELING: </b>Which mode to use before fueling. This is the mode which the generator will use if you fuel after z230. Using Hybrid mode before unlocking is very naughty and will be punished! ', 'multitoggle', 1, null, 'Magma');
     createSetting('fuellater', 'Start Fuel Z', 'Start fueling at this zone instead of 230. I would suggest you have a value lower than your max, for obvious reasons. Recommend starting at a value close-ish to your max supply. Use 230 to use your <b>BEFORE FUEL</b> setting. ', 'value', -1, null, 'Magma');
     createSetting('fuelend', 'End Fuel Z', 'End fueling at this zone. After this zone is reached, will follow your preference. -1 to fuel infinitely. ', 'value', -1, null, 'Magma');
-    createSetting('defaultgen', ['Gain Mi', 'Gain Fuel', 'Hybrid'], '<b>MODE AFTER FUELING: </b>Which mode to use after fueling. ', 'multitoggle', 1, null, 'Magma');
-    createSetting('AutoGenDC', ['Daily: Normal', 'Daily: Fuel', 'Daily: Hybrid'], '<b>Normal:</b> Uses the AutoGen settings. <br><b>Fuel:</b> Fuels the entire Daily. <br><b>Hybrid:</b> Uses Hybrid for the entire Daily. ', 'multitoggle', 1, null, 'Magma');
-    createSetting('AutoGenC2', ['C2: Normal', 'C2: Fuel', 'C2: Hybrid'], '<b>Normal:</b> Uses the AutoGen settings. <br><b>Fuel:</b> Fuels the entire C2. <br><b>Hybrid:</b> Uses Hybrid for the entire C2. ', 'multitoggle', 1, null, 'Magma');
+    createSetting('defaultgen', ['Gain Mi', 'Gain Fuel', 'Hybrid'], '<b>MODE AFTER FUELING: </b>Which mode to use after fueling. Using Hybrid mode before unlocking is very naughty and will be punished! ', 'multitoggle', 1, null, 'Magma');
+    createSetting('AutoGenDC', ['Daily: Normal', 'Daily: Fuel', 'Daily: Hybrid'], '<b>Normal:</b> Uses the AutoGen settings. <br><b>Fuel:</b> Fuels the entire Daily. <br><b>Hybrid:</b> Uses Hybrid for the entire Daily. Using Hybrid mode before unlocking is very naughty and will be punished! ', 'multitoggle', 1, null, 'Magma');
+    createSetting('AutoGenC2', ['C2: Normal', 'C2: Fuel', 'C2: Hybrid'], '<b>Normal:</b> Uses the AutoGen settings. <br><b>Fuel:</b> Fuels the entire C2. <br><b>Hybrid:</b> Uses Hybrid for the entire C2. Using Hybrid mode before unlocking is very naughty and will be punished! ', 'multitoggle', 1, null, 'Magma');
 
     //Spend Mi
     document.getElementById('AutoGenC2').parentNode.insertAdjacentHTML('afterend', '<br>');
@@ -1055,48 +1077,49 @@ function initializeAllSettings() {
     createSetting('RhsWoodStaff', 'Wood', '<b>Wood farming staff</b><br><br>Enter the name of the staff you would like to equip during wood farming.', 'textValue', 'undefined', null, 'Heirlooms');
 
     //Heirloom Line
+
     document.getElementById('RhsWoodStaff').parentNode.insertAdjacentHTML('afterend', '<br>');
-    createSetting('autoheirlooms', 'Auto Heirlooms', 'Auto Heirlooms master button. Turn this on to enable all Auto Heirloom settings. <br><br><b>The Modifier points will be explained here.</b> The more points an heirloom has, the better chance it has of being kept. If empty is selected, it will muliplty the score by 4. If any is selected, it will multiply the score of the heirloom by 2. <br><br>E.g Mod 1 = CC (+6 if dropped, 1st modifier) <br>Mod 2 = CD (+5 if dropped, 2nd modifier) <br>Mod 3 = PB (+4 if dropped, 3rd modifier) <br>Mod 4 = Empty (x4 if dropped, +0 if not) <br>Mod 5 = Empty (x4 if dropped, +0 if not) <br><br>If an heirloom dropped with these exact modifiers, it would get a score of 192 (6+5+4*4*4=240). The highest point heirlooms will be kept. ', 'boolean', false, null, 'Heirlooms');
+    createSetting('autoheirlooms', 'Auto Heirlooms', 'Auto Heirlooms master button. Turn this on to enable all Auto Heirloom settings. <br><br><b>The Modifier points will be explained here.</b> The more points an heirloom has, the better chance it has of being kept. If empty is selected, it will muliplty the score by 4. <br><br>E.g Mod 1 = CC (+5 if dropped, 1st modifier) <br>Mod 2 = CD (+5 if dropped, 2nd modifier) <br>Mod 3 = PB (+5 if dropped, 3rd modifier) <br>Mod 4 = Empty (x4 if dropped, +0 if not) <br>Mod 5 = Empty (x4 if dropped, +0 if not) <br><br>If an heirloom dropped with these exact modifiers, it would get a score of 192 (5+5+5*4*4=240). The highest point heirlooms will be kept. <br> <b>You MUST select at least one modifier. It will fill up the slots first then recycle the lowest rarity. </b>', 'boolean', false, null, 'Heirlooms');
     createSetting('typetokeep', ['None', 'Shields', 'Staffs', 'Cores', 'All'], '<b>Shields: </b>Keeps Shields and nothing else.<br><b>Staffs: </b>Keeps Staffs and nothing else.<br><b>Cores: </b>Keeps Cores and nothing else.<br><b>All: </b>Keeps 4 Shields and 3 Staffs and 3 Cores. If you have protected heirlooms in your inventory it will overrite one slot. E.g if one heirloom is protected, you will keep 4 Shields and 3 Staffs and 2 Cores. ', 'multitoggle', 0, null, 'Heirlooms');
-    createSetting('raretokeep', 'Rarity to Keep', 'Auto Heirlooms. Keeps the selected rarity of heirloom, recycles all others. ', 'dropdown', 'Any', ["Any", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Magnificent", "Ethereal", "Magmatic", "Plagued", "Radiating", "Hazardous", "Enigmatic"], 'Heirlooms');
+    createSetting('raretokeep', 'Rarity to Keep', 'Auto Heirlooms. Keeps the selected rarity of heirloom, recycles all others when your inventory is full. You may keep lower rarity heirlooms if you have empty slots. ', 'dropdown', 'Any', ["Any", "Common", "Uncommon", "Rare", "Epic", "Legendary", "Magnificent", "Ethereal", "Magmatic", "Plagued", "Radiating", "Hazardous", "Enigmatic"], 'Heirlooms');
 
     //Shield Line
     document.getElementById('raretokeep').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('keepshields', 'Shields', 'Auto Heirlooms. Enables in-depth shield settings. ', 'boolean', false, null, 'Heirlooms');
-    createSetting('slot1modsh', 'Shield: Modifier 1', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 1 is worth 7 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
-    createSetting('slot2modsh', 'Shield: Modifier 2', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 2 is worth 6 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
+    createSetting('slot1modsh', 'Shield: Modifier 1', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 1 is worth 5 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
+    createSetting('slot2modsh', 'Shield: Modifier 2', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 2 is worth 5 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
     createSetting('slot3modsh', 'Shield: Modifier 3', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 3 is worth 5 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
-    createSetting('slot4modsh', 'Shield: Modifier 4', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 4 is worth 4 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
-    createSetting('slot5modsh', 'Shield: Modifier 5', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 5 is worth 3 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
-    createSetting('slot6modsh', 'Shield: Modifier 6', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 6 is worth 2 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
-    createSetting('slot7modsh', 'Shield: Modifier 7', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 7 is worth 1 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
+    createSetting('slot4modsh', 'Shield: Modifier 4', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 4 is worth 5 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
+    createSetting('slot5modsh', 'Shield: Modifier 5', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 5 is worth 5 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
+    createSetting('slot6modsh', 'Shield: Modifier 6', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 6 is worth 5 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
+    createSetting('slot7modsh', 'Shield: Modifier 7', 'Auto Heirlooms. Keeps Shields with selected Mod. Modifier 7 is worth 5 points. ', 'dropdown', 'empty', ["empty", "playerEfficiency", "trainerEfficiency", "storageSize", "breedSpeed", "trimpHealth", "trimpAttack", "trimpBlock", "critDamage", "critChance", "voidMaps", "plaguebringer", "prismatic", "gammaBurst", "inequality"], 'Heirlooms');
 
     //Staff Line
     document.getElementById('slot7modsh').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('keepstaffs', 'Staffs', 'Auto Heirlooms. Enables in-depth staff settings. ', 'boolean', false, null, 'Heirlooms');
-    createSetting('slot1modst', 'Staff: Modifier 1', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 1 is worth 7 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
-    createSetting('slot2modst', 'Staff: Modifier 2', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 2 is worth 6 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
+    createSetting('slot1modst', 'Staff: Modifier 1', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 1 is worth 5 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
+    createSetting('slot2modst', 'Staff: Modifier 2', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 2 is worth 5 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
     createSetting('slot3modst', 'Staff: Modifier 3', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 3 is worth 5 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
-    createSetting('slot4modst', 'Staff: Modifier 4', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 4 is worth 4 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
-    createSetting('slot5modst', 'Staff: Modifier 5', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 5 is worth 3 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
-    createSetting('slot6modst', 'Staff: Modifier 6', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 6 is worth 2 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
-    createSetting('slot7modst', 'Staff: Modifier 7', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 7 is worth 1 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
+    createSetting('slot4modst', 'Staff: Modifier 4', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 4 is worth 5 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
+    createSetting('slot5modst', 'Staff: Modifier 5', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 5 is worth 5 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
+    createSetting('slot6modst', 'Staff: Modifier 6', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 6 is worth 5 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
+    createSetting('slot7modst', 'Staff: Modifier 7', 'Auto Heirlooms. Keeps Staffs with selected Mod. Modifier 7 is worth 5 points. ', 'dropdown', 'empty', ["empty", "metalDrop", "foodDrop", "woodDrop", "gemsDrop", "fragmentsDrop", "minerSpeed", "FarmerSpeed", "LumberjackSpeed", "DragimpSpeed", "ExplorerSpeed", "ScientistSpeed", "FluffyExp", "ParityPower"], 'Heirlooms');
 
     //Core Line
     document.getElementById('slot7modst').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('keepcores', 'Cores', 'Auto Heirlooms. Enables in-depth core settings. ', 'boolean', false, null, 'Heirlooms');
     createSetting('slot1modcr', 'Cores: Modifier 1', 'Auto Heirlooms. Keeps Cores with selected Mod. Modifier 1 is worth 5 points. ', 'dropdown', 'empty', ["empty", "fireTrap", "poisonTrap", "lightningTrap", "runestones", "strengthEffect", "condenserEffect"], 'Heirlooms');
-    createSetting('slot2modcr', 'Cores: Modifier 2', 'Auto Heirlooms. Keeps Cores with selected Mod. Modifier 2 is worth 4 points. ', 'dropdown', 'empty', ["empty", "fireTrap", "poisonTrap", "lightningTrap", "runestones", "strengthEffect", "condenserEffect"], 'Heirlooms');
-    createSetting('slot3modcr', 'Cores: Modifier 3', 'Auto Heirlooms. Keeps Cores with selected Mod. Modifier 3 is worth 3 points. ', 'dropdown', 'empty', ["empty", "fireTrap", "poisonTrap", "lightningTrap", "runestones", "strengthEffect", "condenserEffect"], 'Heirlooms');
-    createSetting('slot4modcr', 'Cores: Modifier 4', 'Auto Heirlooms. Keeps Cores with selected Mod. Modifier 4 is worth 2 points. ', 'dropdown', 'empty', ["empty", "fireTrap", "poisonTrap", "lightningTrap", "runestones", "strengthEffect", "condenserEffect"], 'Heirlooms');
+    createSetting('slot2modcr', 'Cores: Modifier 2', 'Auto Heirlooms. Keeps Cores with selected Mod. Modifier 2 is worth 5 points. ', 'dropdown', 'empty', ["empty", "fireTrap", "poisonTrap", "lightningTrap", "runestones", "strengthEffect", "condenserEffect"], 'Heirlooms');
+    createSetting('slot3modcr', 'Cores: Modifier 3', 'Auto Heirlooms. Keeps Cores with selected Mod. Modifier 3 is worth 5 points. ', 'dropdown', 'empty', ["empty", "fireTrap", "poisonTrap", "lightningTrap", "runestones", "strengthEffect", "condenserEffect"], 'Heirlooms');
+    createSetting('slot4modcr', 'Cores: Modifier 4', 'Auto Heirlooms. Keeps Cores with selected Mod. Modifier 4 is worth 5 points. ', 'dropdown', 'empty', ["empty", "fireTrap", "poisonTrap", "lightningTrap", "runestones", "strengthEffect", "condenserEffect"], 'Heirlooms');
 
 
 
     //Golden
 
-    createSetting('AutoGoldenUpgrades', 'AutoGoldenUpgrades', 'Buys Golden Upgrades in Fillers. Helium buys all Helium golden upgrades. Battle buys all Battle golden upgrades. Void buys 8 Void golden upgrades (max number you can buy) then buys helium golden upgrades. Void + Battle buys 8 voids then battle. ', 'dropdown', 'Off', ["Off", "Helium", "Battle", "Void", "Void + Battle"], 'Golden');
-    createSetting('dAutoGoldenUpgrades', 'Daily AutoGoldenUpgrades', 'Buys Golden Upgrades in Dailies. Helium buys all Helium golden upgrades. Battle buys all Battle golden upgrades. Void buys 8 Void golden upgrades (max number you can buy) then buys helium golden upgrades. Void + Battle buys 8 voids then battle. ', 'dropdown', 'Off', ["Off", "Helium", "Battle", "Void", "Void + Battle"], 'Golden');
-    createSetting('cAutoGoldenUpgrades', 'C2 AutoGoldenUpgrades', 'Buys Golden Upgrades in C2s. Helium buys all Helium golden upgrades. Battle buys all Battle golden upgrades. Void buys 8 Void golden upgrades (max number you can buy) then buys helium golden upgrades. Void + Battle buys 8 voids then battle. ', 'dropdown', 'Off', ["Off", "Battle", "Void", "Void + Battle"], 'Golden');
+    createSetting('AutoGoldenUpgrades', 'AutoGoldenUpgrades', 'Buys Golden Upgrades in Fillers. Helium buys all Helium golden upgrades. Battle buys all Battle golden upgrades. Void buys 8 Void golden upgrades (max number you can buy) then buys helium golden upgrades. Void + Battle buys 8 voids then battle. Will run way faster than Vanilla AutoGold so if you have this on expect it to win over vanilla settings. ', 'dropdown', 'Off', ["Off", "Helium", "Battle", "Void", "Void + Battle"], 'Golden');
+    createSetting('dAutoGoldenUpgrades', 'Daily AutoGoldenUpgrades', 'Buys Golden Upgrades in Dailies. Helium buys all Helium golden upgrades. Battle buys all Battle golden upgrades. Void buys 8 Void golden upgrades (max number you can buy) then buys helium golden upgrades. Void + Battle buys 8 voids then battle. Will run way faster than Vanilla AutoGold so if you have this on expect it to win over vanilla settings. ', 'dropdown', 'Off', ["Off", "Helium", "Battle", "Void", "Void + Battle"], 'Golden');
+    createSetting('cAutoGoldenUpgrades', 'C2 AutoGoldenUpgrades', 'Buys Golden Upgrades in C2s. Helium buys all Helium golden upgrades. Battle buys all Battle golden upgrades. Void buys 8 Void golden upgrades (max number you can buy) then buys helium golden upgrades. Void + Battle buys 8 voids then battle. Will run way faster than Vanilla AutoGold so if you have this on expect it to win over vanilla settings. ', 'dropdown', 'Off', ["Off", "Battle", "Void", "Void + Battle"], 'Golden');
     document.getElementById('cAutoGoldenUpgrades').parentNode.insertAdjacentHTML('afterend', '<br>');
     createSetting('voidheliumbattle', 'Void Battle', '<b>-1 to disable.</b><br> Buys Battle goldens instead of Helium at this zone and onwards. This option only appears when selecting void. ', 'value', -1, null, 'Golden');
     createSetting('dvoidheliumbattle', 'Daily Void Battle', '<b>-1 to disable.</b><br> Buys Battle goldens instead of Helium at this zone and onwards in Dailies. This option only appears when selecting void. ', 'value', -1, null, 'Golden');
@@ -1162,6 +1185,7 @@ function initializeAllSettings() {
     //MAZ window Stuff
     document.getElementById('Rtimefarmmaz').setAttribute('onclick', 'MAZLookalike("Time Farm", "Rtimefarm")');
     document.getElementById('Rdtimefarmmaz').setAttribute('onclick', 'MAZLookalike("dTime Farm", "Rdtimefarm")');
+    document.getElementById('Rsmithyfarmmaz').setAttribute('onclick', 'MAZLookalike("Smithy Farm", "Rsmithyfarm")');
     document.getElementById('Rtributefarmmaz').setAttribute('onclick', 'MAZLookalike("Tribute Farm", "Rtributefarm")');
     document.getElementById('Hshrinemaz').setAttribute('onclick', 'MAZLookalike("Shrine - U1", "Hshrine")');
     document.getElementById('Hdshrinemaz').setAttribute('onclick', 'MAZLookalike("Shrine - U1 (Daily)", "Hdshrine")');
@@ -1241,6 +1265,9 @@ function initializeAllSettings() {
 
     document.getElementById('Rchallengehidehypothermia').setAttribute('onclick', 'settingChanged("Rchallengehidehypothermia"), modifyParentNode("Rchallengehidehypothermia", "Rhypostorage")');
     modifyParentNode("Rchallengehidehypothermia", "Rhypostorage");
+
+    document.getElementById('Rchallengehidedeso').setAttribute('onclick', 'settingChanged("Rchallengehidedeso"), modifyParentNode("Rchallengehidedeso", "Rdesomult")');
+    modifyParentNode("Rchallengehidedeso", "Rdesomult");
 
     settingsProfileMakeGUI();
 
@@ -1364,7 +1391,7 @@ function createSetting(id, name, description, type, defaultValue, list, containe
         btn.setAttribute("onclick", 'ImportExportTooltip(\'' + defaultValue + '\', \'update\')');
         btn.setAttribute("onmouseover", 'tooltip(\"' + name + '\", \"customText\", event, \"' + description + '\")');
         btn.setAttribute("onmouseout", 'tooltip("hide")');
-        btn.setAttribute("style", "background-color: #e1ade6; color: black; font-size: 1.1vw;");
+        btn.setAttribute("style", "background-color: #d88839; color: black; font-size: 1.1vw;");
         btn.textContent = name;
         btnParent.appendChild(btn);
         if (container) document.getElementById(container).appendChild(btnParent);
@@ -1586,8 +1613,11 @@ function autoToggle(what) {
         if (game.options.displayed)
             toggleSettingsMenu();
         var $item = document.getElementById('graphParent');
-        if ($item.style.display === 'block')
+        if ($item.style.display === 'block') {
             $item.style.display = 'none';
+            trimpStatsDisplayed = false;
+            GRAPHSETTINGS.open = false;
+        }
         var $item = document.getElementById('autoTrimpsTabBarMenu');
         if ($item.style.display === 'block')
             $item.style.display = 'none';
@@ -1604,8 +1634,11 @@ function autoPlusSettingsMenu() {
     if ($item.style.display === 'block')
         $item.style.display = 'none';
     var $item = document.getElementById('graphParent');
-    if ($item.style.display === 'block')
+    if ($item.style.display === 'block') {
         $item.style.display = 'none';
+        trimpStatsDisplayed = false;
+        GRAPHSETTINGS.open = false;
+    }
     var $item = document.getElementById('autoTrimpsTabBarMenu');
     if ($item.style.display === 'block')
         $item.style.display = 'none';
@@ -1876,6 +1909,9 @@ function updateCustomButtons() {
     (!radonon && !fuckbuilding) ? turnOn("WarpstationCoordBuy") : turnOff("WarpstationCoordBuy");
     (!radonon && !fuckbuilding) ? turnOn("FirstGigastation") : turnOff("FirstGigastation");
     (!radonon && !fuckbuilding) ? turnOn("DeltaGigastation") : turnOff("DeltaGigastation");
+    (!radonon && !fuckbuilding) ? turnOn("AutoGigas") : turnOff("AutoGigas");
+    (!radonon && !fuckbuilding && getPageSetting("AutoGigas") == true) ? turnOn("CustomTargetZone") : turnOff("CustomTargetZone");
+    (!radonon && !fuckbuilding && getPageSetting("AutoGigas") == true) ? turnOn("CustomDeltaFactor") : turnOff("CustomDeltaFactor");
     (!radonon && !fuckbuilding) ? turnOn("WarpstationWall3") : turnOff("WarpstationWall3");
 
 
@@ -1972,6 +2008,7 @@ function updateCustomButtons() {
     (!radonon && getPageSetting('AutoMaps') == 2) ? turnOn("AMUbw") : turnOff("AMUbw");
     (!radonon && getPageSetting('AutoMaps') == 2) ? turnOn("AMUstar") : turnOff("AMUstar");
     !radonon ? turnOn("automapsportal") : turnOff("automapsportal");
+    !radonon ? turnOn("automapsalways") : turnOff("automapsalways");
 
 
     !radonon ? turnOn("mapselection") : turnOff("mapselection");
@@ -2009,6 +2046,7 @@ function updateCustomButtons() {
     //RMaps
     radonon ? turnOn("RAutoMaps") : turnOff("RAutoMaps");
     radonon ? turnOn("Rautomapsportal") : turnOff("Rautomapsportal");
+    radonon ? turnOn("Rautomapsalways") : turnOff("Rautomapsalways");
     radonon ? turnOn("Rmapselection") : turnOff("Rmapselection");
     radonon ? turnOn("RMaxMapBonusAfterZone") : turnOff("RMaxMapBonusAfterZone");
     radonon ? turnOn("RMaxMapBonuslimit") : turnOff("RMaxMapBonuslimit");
@@ -2026,6 +2064,12 @@ function updateCustomButtons() {
     turnOff("Rtimefarmmap");
     turnOff("Rtimefarmspecial");
     turnOff("Rtimefarmgather");
+
+    radonon ? turnOn("Rsmithyfarm") : turnOff("Rsmithyfarm");
+    (radonon && getPageSetting('Rsmithyfarm') == true) ? turnOn("Rsmithyfarmmaz") : turnOff("Rsmithyfarmmaz");
+    turnOff("Rsmithyfarmzone");
+    turnOff("Rsmithyfarmcell");
+    turnOff("Rsmithyfarmamount");
 
     radonon ? turnOn("Rtributefarm") : turnOff("Rtributefarm");
     (radonon && getPageSetting('Rtributefarm') == true) ? turnOn("Rtributefarmmaz") : turnOff("Rtributefarmmaz");
@@ -2219,6 +2263,12 @@ function updateCustomButtons() {
     radonon && getPageSetting('Rhypoon') == true ? turnOn("Rhypovoids") : turnOff("Rhypovoids");
     radonon && getPageSetting('Rhypoon') == true ? turnOn("Rhypostorage") : turnOff("Rhypostorage");
 
+    //Desolation
+    radonon ? turnOn("Rdesoon") : turnOff("Rdesoon");
+    radonon && getPageSetting('Rdesoon') == true ? turnOn("Rdesozone") : turnOff("Rdesozone");
+    radonon && getPageSetting('Rdesoon') == true ? turnOn("RdesoHD") : turnOff("RdesoHD");
+    radonon && getPageSetting('Rdesoon') == true ? turnOn("Rdesomult") : turnOff("Rdesomult");
+
     //Hide Challenges
     radonon ? turnOn("Rchallengehide") : turnOff("Rchallengehide");
     radonon && getPageSetting('Rchallengehide') == true ? turnOn("Rchallengehidequag") : turnOff("Rchallengehidequag");
@@ -2231,6 +2281,7 @@ function updateCustomButtons() {
     radonon && getPageSetting('Rchallengehide') == true ? turnOn("Rchallengehidepanda") : turnOff("Rchallengehidepanda");
     radonon && getPageSetting('Rchallengehide') == true ? turnOn("Rchallengehidealchemy") : turnOff("Rchallengehidealchemy");
     radonon && getPageSetting('Rchallengehide') == true ? turnOn("Rchallengehidehypothermia") : turnOff("Rchallengehidehypothermia");
+    radonon && getPageSetting('Rchallengehide') == true ? turnOn("Rchallengehidedeso") : turnOff("Rchallengehidedeso");
 
     if (getPageSetting('Rchallengehidequag') == true) {
         turnOff("Rblackbog");
@@ -2303,6 +2354,13 @@ function updateCustomButtons() {
         turnOff("Rhypocastle");
         turnOff("Rhypovoids");
         turnOff("Rhypostorage");
+    }
+
+    if (getPageSetting('Rchallengehidedeso') == true) {
+        turnOff("Rdesoon");
+        turnOff("Rdesozone");
+        turnOff("RdesoHD");
+        turnOff("Rdesomult");
     }
 
 
@@ -2530,6 +2588,7 @@ function updateCustomButtons() {
         var item = autoTrimpSettings[setting];
         if (item.type == 'value' || item.type == 'valueNegative' || item.type == 'multitoggle' || item.type == 'multiValue' || item.type == 'textValue') {
             var elem = document.getElementById(item.id);
+            if (elem.parentNode.style.display === 'none') continue;
             if (elem != null) {
                 if (item.type == 'multitoggle')
                     elem.textContent = item.name[item.value];
@@ -2609,6 +2668,7 @@ function toggleAutoMaps() {
         }
         document.getElementById('autoMapBtn').setAttribute('class', 'noselect settingsBtn settingBtn' + autoTrimpSettings.RAutoMaps.value);
     }
+    saveSettings();
 }
 function toggleFarmMode(modeName) {
     let metalBtn = document.getElementById('farmMetalBtn');

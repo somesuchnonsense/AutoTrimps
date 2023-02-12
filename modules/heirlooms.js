@@ -76,6 +76,9 @@ function evaluateHeirloomMods2(loom, location) {
 		if (type == "Core") {
 			eff += getHeirloomEff(name, "core");
 		}
+		if (rarity >= raretokeep) {
+			eff += 1000;
+		}
 		if (name == "empty" && type == "Shield") {
 			eff *= 4;
 		}
@@ -576,11 +579,17 @@ function Rdheirloomswap() {
 		if (getPageSetting('Rdhsworldstaff') != "undefined" && game.global.mapsActive == false) {
 			Rhsworldstaffequip();
 		}
-		if (getPageSetting('Rdhsmapstaff') != "undefined" && (Rdshouldtimefarm == false || getPageSetting('Rdhstributestaff') == "undefined") && game.global.mapsActive == true) {
+		if (getPageSetting('Rdhsmapstaff') != "undefined" && (Rdshouldtributefarm == false || getPageSetting('Rdhstributestaff') == "undefined") && game.global.mapsActive == true) {
 			Rhsmapstaffequip();
 		}
 		if (getPageSetting('Rdhstributestaff') != "undefined" && getPageSetting('Rdhsstaff') && (Rshouldtributefarm == true || Rshouldshipfarm == true) && game.global.mapsActive == true) {
 			Rhstributestaffequip();
 		}
 	}
+}
+
+function HeirloomShieldSwapped() {
+	if (!game.global.ShieldEquipped.rarity >= 10) return;
+	gammaBurstPct = (getHeirloomBonus("Shield", "gammaBurst") / 100) > 0 ? (getHeirloomBonus("Shield", "gammaBurst") / 100) : 1;
+	shieldEquipped = game.global.ShieldEquipped.id;
 }
