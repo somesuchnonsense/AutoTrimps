@@ -570,20 +570,30 @@ function Rdheirloomswap() {
 		if (getPageSetting('Rdhsz') > 0 && game.global.world < getPageSetting('Rdhsz')) {
 			Rhsequip1();
 		}
-		if (getPageSetting('Rdhsz') > 0 && game.global.world >= getPageSetting('Rdhsz')) {
+		if (getPageSetting('Rdhsz') > 0 && game.global.world >= getPageSetting('Rdhsz') || (getPageSetting('Rhs2UseInMaps') && game.global.mapsActive == true)) {
 			Rhsequip2();
 		}
 	}
 	//Swapping Staffs
 	if (getPageSetting('Rdhsstaff') != false) {
-		if (getPageSetting('Rdhsworldstaff') != "undefined" && game.global.mapsActive == false) {
-			Rhsworldstaffequip();
-		}
-		if (getPageSetting('Rdhsmapstaff') != "undefined" && (Rdshouldtributefarm == false || getPageSetting('Rdhstributestaff') == "undefined") && game.global.mapsActive == true) {
-			Rhsmapstaffequip();
-		}
-		if (getPageSetting('Rdhstributestaff') != "undefined" && getPageSetting('Rdhsstaff') && (Rshouldtributefarm == true || Rshouldshipfarm == true) && game.global.mapsActive == true) {
-			Rhstributestaffequip();
+		switch (true) {
+			case ((Rshouldtributefarm == true || Rshouldshipfarm == true || ResourceToFarm === 'Food') && game.global.mapsActive == true && getPageSetting('Rdhstributestaff') != "undefined"):
+				EquipHeirloomByTypeAndSettingName('staff', 'Rhstributestaff');
+				break;
+			case (ResourceToFarm === 'Wood' && game.global.mapsActive == true && getPageSetting('RhsWoodStaff') != "undefined"):
+				EquipHeirloomByTypeAndSettingName('staff', 'RhsWoodStaff');
+				break;
+			case (ResourceToFarm === 'Metal' && game.global.mapsActive == true && getPageSetting('RhsMetalStaff') != "undefined"):
+				EquipHeirloomByTypeAndSettingName('staff', 'RhsMetalStaff');
+				break;
+			case (getPageSetting('Rdhsmapstaff') != "undefined" && game.global.mapsActive == true):
+				EquipHeirloomByTypeAndSettingName('staff', 'Rhsmapstaff');
+				break;
+			case (getPageSetting('Rdhsworldstaff') != "undefined" && game.global.mapsActive == false):
+				EquipHeirloomByTypeAndSettingName('staff', 'Rhsworldstaff');
+				break;
+			default:
+				break;
 		}
 	}
 }
