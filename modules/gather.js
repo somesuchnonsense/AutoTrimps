@@ -360,7 +360,7 @@ function RmanualLabor2() {
                 setGather('wood');
                 break;
             case 'Metal':
-                setGather('Metal');
+                setGather('metal');
                 break;
             case 'Science':
                 setGather('science');
