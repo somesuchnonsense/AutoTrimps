@@ -251,7 +251,7 @@ function RresetVars() {
     //Storm
     Rstormfarm = false;
     Rshouldstormfarm = false;
-    
+
     //Desolation
     Rdesofarm = false;
     Rshoulddesofarm = false;
@@ -313,10 +313,10 @@ function RfragMap() {
     var fragsOwned = game.resources.fragments.owned;
     for (var i = 8; i >= 0; i--) {
         if (updateMapCost(true) > fragsOwned) {
-          document.getElementById("difficultyAdvMapsRange").value = i;
+            document.getElementById("difficultyAdvMapsRange").value = i;
         } else break;
         if (updateMapCost(true) > fragsOwned) {
-          document.getElementById("sizeAdvMapsRange").value = i;
+            document.getElementById("sizeAdvMapsRange").value = i;
         } else break;
     }
     if (updateMapCost(true) > game.resources.fragments.owned) {
@@ -864,7 +864,7 @@ function RsmithyFarm(amount) {
 function RmapLevelCalc() {
     var HD = (RcalcHDratio() / 1.5);
     var level = 0;
-    
+
     if (HD >= 10000) level = -3;
     if (HD >= 5000) level = -2;
     if (HD >= 500) level = -1;
@@ -877,7 +877,7 @@ function RmapLevelCalc() {
     if (HD <= 0.005) level = 6;
     if (HD <= 0.0001) level = 7;
     if (HD <= 0.00005) level = 8;
-    
+
     return level;
 }
 
@@ -1931,6 +1931,7 @@ function RshipMap() {
                 document.getElementById("mapLevelInput").value = (game.global.world + shiplevelzones);
                 document.getElementById("advExtraLevelSelect").value = 0;
             }
+            document.getElementById("advSpecialSelect").value = game.global.highestRadonLevelCleared > 83 ? "lsc" : "ssc";
         }
     }
 
@@ -2344,14 +2345,14 @@ function RselectPanda() {
 
 function RselectDeso() {
     var selectedMap = "create";
-        for (var map in game.global.mapsOwnedArray) {
-            if (!game.global.mapsOwnedArray[map].noRecycle && RdesoExtra() >= 0 && ((game.global.world + RdesoExtra()) == game.global.mapsOwnedArray[map].level)) {
-                selectedMap = game.global.mapsOwnedArray[map].id;
-                break;
-            } else {
-                selectedMap = "create";
-            }
+    for (var map in game.global.mapsOwnedArray) {
+        if (!game.global.mapsOwnedArray[map].noRecycle && RdesoExtra() >= 0 && ((game.global.world + RdesoExtra()) == game.global.mapsOwnedArray[map].level)) {
+            selectedMap = game.global.mapsOwnedArray[map].id;
+            break;
+        } else {
+            selectedMap = "create";
         }
+    }
     return selectedMap;
 }
 
@@ -2496,51 +2497,51 @@ function RselectOther(other) {
 function RselectMap(selectedMap) {
     if (Rshould(true, false) && selectedMap == "world") {
 
-            if (Rshould(false, true) == "frag") {
-                selectedMap = RselectFrag();
-            } else if (Rshould(false, true) == "mayhem") {
-                selectedMap = RselectMayhem();
-            } else if (Rshould(false, true) == "panda") {
-                selectedMap = RselectPanda();
-            } else if (Rshould(false, true) == "deso") {
-                selectedMap = RselectDeso();
-            } else if (Rshould(false, true) == "insanity") {
-                selectedMap = RselectOther("insanity");
-            } else if (Rshould(false, true) == "alch") {
-                selectedMap = RselectOther("alch");
-            } else if (Rshould(false, true) == "hypo") {
-                selectedMap = RselectOther("hypo");
-            } else if (Rshould(false, true) == "ship") {
-                selectedMap = RselectShip();
-            } else if (Rshould(false, true) == "time") {
-                selectedMap = RselectOther("time");
-            } else if (Rshould(false, true) == "dtime") {
-                selectedMap = RselectOther("dtime");
-            } else if (Rshould(false, true) == "smithy") {
-                selectedMap = RselectSmithy();
-            } else if (Rshould(false, true) == "tribute") {
-                selectedMap = RselectOther("tribute");
-            } else if (Rshould(false, true) == "quest") {
-                selectedMap = RselectQuest();
-            } else if (Rshould(false, true) == "equip") {
-                for (var map in game.global.mapsOwnedArray) {
-                    if (!game.global.mapsOwnedArray[map].noRecycle && RequipExtra() <= 0 && ((game.global.world + RequipExtra()) == game.global.mapsOwnedArray[map].level)) {
-                        selectedMap = game.global.mapsOwnedArray[map].id;
-                        break;
-                    } else {
-                        selectedMap = "create";
-                    }
-                }
-            } else {
-                for (var map in game.global.mapsOwnedArray) {
-                    if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level) {
-                        selectedMap = game.global.mapsOwnedArray[map].id;
-                        break;
-                    } else {
-                        selectedMap = "create";
-                    }
+        if (Rshould(false, true) == "frag") {
+            selectedMap = RselectFrag();
+        } else if (Rshould(false, true) == "mayhem") {
+            selectedMap = RselectMayhem();
+        } else if (Rshould(false, true) == "panda") {
+            selectedMap = RselectPanda();
+        } else if (Rshould(false, true) == "deso") {
+            selectedMap = RselectDeso();
+        } else if (Rshould(false, true) == "insanity") {
+            selectedMap = RselectOther("insanity");
+        } else if (Rshould(false, true) == "alch") {
+            selectedMap = RselectOther("alch");
+        } else if (Rshould(false, true) == "hypo") {
+            selectedMap = RselectOther("hypo");
+        } else if (Rshould(false, true) == "ship") {
+            selectedMap = RselectShip();
+        } else if (Rshould(false, true) == "time") {
+            selectedMap = RselectOther("time");
+        } else if (Rshould(false, true) == "dtime") {
+            selectedMap = RselectOther("dtime");
+        } else if (Rshould(false, true) == "smithy") {
+            selectedMap = RselectSmithy();
+        } else if (Rshould(false, true) == "tribute") {
+            selectedMap = RselectOther("tribute");
+        } else if (Rshould(false, true) == "quest") {
+            selectedMap = RselectQuest();
+        } else if (Rshould(false, true) == "equip") {
+            for (var map in game.global.mapsOwnedArray) {
+                if (!game.global.mapsOwnedArray[map].noRecycle && RequipExtra() <= 0 && ((game.global.world + RequipExtra()) == game.global.mapsOwnedArray[map].level)) {
+                    selectedMap = game.global.mapsOwnedArray[map].id;
+                    break;
+                } else {
+                    selectedMap = "create";
                 }
             }
+        } else {
+            for (var map in game.global.mapsOwnedArray) {
+                if (!game.global.mapsOwnedArray[map].noRecycle && game.global.world == game.global.mapsOwnedArray[map].level) {
+                    selectedMap = game.global.mapsOwnedArray[map].id;
+                    break;
+                } else {
+                    selectedMap = "create";
+                }
+            }
+        }
     }
     return selectedMap;
 }
