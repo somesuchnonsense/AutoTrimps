@@ -1931,9 +1931,9 @@ function RshipMap() {
                 document.getElementById("mapLevelInput").value = (game.global.world + shiplevelzones);
                 document.getElementById("advExtraLevelSelect").value = 0;
             }
-            document.getElementById("advSpecialSelect").value = game.global.highestRadonLevelCleared > 83 ? "lsc" : "ssc";
         }
     }
+    document.getElementById("advSpecialSelect").value = game.global.highestRadonLevelCleared > 83 ? "lsc" : "ssc";
 
     updateMapCost();
 }
