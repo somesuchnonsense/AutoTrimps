@@ -468,10 +468,10 @@ function Rheirloomswap() {
 	//Swapping Shields
 	if (getPageSetting('Rhsshield') != false) {
 		if (getPageSetting('Rhsz') > 0 && game.global.world < getPageSetting('Rhsz')) {
-			Rhsequip1();
+			EquipHeirloomByTypeAndSettingName('shield', 'Rhs1')
 		}
 		if ((getPageSetting('Rhsz') > 0 && game.global.world >= getPageSetting('Rhsz')) || (getPageSetting('Rhs2UseInMaps') && game.global.mapsActive == true)) {
-			Rhsequip2();
+			EquipHeirloomByTypeAndSettingName('shield', 'Rhs2')
 		}
 	}
 	//Swapping Staffs
@@ -507,10 +507,10 @@ function Rdheirloomswap() {
 	//Swapping Shields
 	if (getPageSetting('Rdhsshield') != false) {
 		if (getPageSetting('Rdhsz') > 0 && game.global.world < getPageSetting('Rdhsz')) {
-			Rhsequip1();
+			EquipHeirloomByTypeAndSettingName('shield', 'Rhs1')
 		}
 		if (getPageSetting('Rdhsz') > 0 && game.global.world >= getPageSetting('Rdhsz') || (getPageSetting('Rhs2UseInMaps') && game.global.mapsActive == true)) {
-			Rhsequip2();
+			EquipHeirloomByTypeAndSettingName('shield', 'Rhs2')
 		}
 	}
 	//Swapping Staffs
