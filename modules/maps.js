@@ -1460,46 +1460,46 @@ function RautoMap() {
                 biomeAdvMapsSelect.value = "Plentiful";
                 updateMapCost();
             }
-            if (Rshould(false, true) == "frag") {
+            else if (Rshould(false, true) == "frag") {
                 RfragMap();
             }
-            if (Rshould(false, true) == "insanity") {
+            else if (Rshould(false, true) == "insanity") {
                 RinsanityMap();
             }
-            if (Rshould(false, true) == "alch") {
+            else if (Rshould(false, true) == "alch") {
                 RalchMap();
             }
-            if (Rshould(false, true) == "hypo") {
+            else if (Rshould(false, true) == "hypo") {
                 RhypoMap();
             }
-            if (Rshould(false, true) == "ship") {
+            else if (Rshould(false, true) == "ship") {
                 RshipMap();
             }
-            if (Rshould(false, true) == "time") {
+            else if (Rshould(false, true) == "time") {
                 RtimeFarmMap(false);
             }
-            if (Rshould(false, true) == "dtime") {
+            else if (Rshould(false, true) == "dtime") {
                 RtimeFarmMap(true);
             }
-            if (Rshould(false, true) == "smithy") {
+            else if (Rshould(false, true) == "smithy") {
                 RsmithyFarmMap();
             }
-            if (Rshould(false, true) == "tribute") {
+            else if (Rshould(false, true) == "tribute") {
                 RtributeFarmMap();
             }
-            if (Rshoulddoquest) {
+            else if (Rshoulddoquest) {
                 RquestMap(Rshoulddoquest);
             }
-            if (Rshouldmayhem > 0 && getPageSetting('Rmayhemmap') == 2 && !Rshouldtimefarm && !Rdshouldtimefarm) {
+            else if (Rshouldmayhem > 0 && getPageSetting('Rmayhemmap') == 2 && !Rshouldtimefarm && !Rdshouldtimefarm) {
                 RlevelMap("mayhem");
             }
-            if (Rshouldpanda && getPageSetting('Rpandamaps') == true && !Rshouldtimefarm && !Rdshouldtimefarm) {
+            else if (Rshouldpanda && getPageSetting('Rpandamaps') == true && !Rshouldtimefarm && !Rdshouldtimefarm) {
                 RlevelMap("panda");
             }
-            if (Rshoulddesofarm && !Rshouldtimefarm && !Rdshouldtimefarm) {
+            else if (Rshoulddesofarm && !Rshouldtimefarm && !Rdshouldtimefarm) {
                 RlevelMap("deso");
             }
-            if (Rshouldequipfarm) {
+            else if (Rshouldequipfarm) {
                 RlevelMap("equip");
             }
 
