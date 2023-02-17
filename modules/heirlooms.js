@@ -453,68 +453,6 @@ function Rdhsworldstaff() { for (loom of game.global.heirloomsCarried) if (loom.
 function Rdhsmapstaff() { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting('Rdhsmapstaff')) return loom; }
 function Rdhstributestaff() { for (loom of game.global.heirloomsCarried) if (loom.name == getPageSetting('Rdhstributestaff')) return loom; }
 
-function Rhsequip1() {
-	if (Rhsshield1() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhs1')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
-function Rhsequip2() {
-	if (Rhsshield2() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rhs2')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
-function Rdhsequip1() {
-	if (Rdhsshield1() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rdhs1')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
-function Rdhsequip2() {
-	if (Rdhsshield2() != "undefined" && game.global.ShieldEquipped.name != getPageSetting('Rdhs2')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
-function Rhsworldstaffequip() {
-	if (Rhsworldstaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhsworldstaff')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
-function Rhsmapstaffequip() {
-	if (Rhsmapstaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhsmapstaff')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
-
-function Rhstributestaffequip() {
-	if (Rhstributestaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rhstributestaff')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
-function Rdhsworldstaffequip() {
-	if (Rdhsworldstaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rdhsworldstaff')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
-function Rdhsmapstaffequip() {
-	if (Rdhsmapstaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rdhsmapstaff')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
-
-function Rdhstributestaffequip() {
-	if (Rdhstributestaff() != "undefined" && game.global.StaffEquipped.name != getPageSetting('Rdhstributestaff')) {
-		selectHeirloom(game.global.heirloomsCarried.indexOf(loom), "heirloomsCarried", true);
-		equipHeirloom(window.getComputedStyle(document.getElementById('heirloomWrapper')).display === "none");
-	}
-}
 function EquipHeirloomByTypeAndSettingName(type, name) {
 	let loom = game.global.heirloomsCarried.find(x => x.name == getPageSetting(name));
 	let currentlyEquipedLoomName = type === 'shield' ? game.global.ShieldEquipped.name : game.global.StaffEquipped.name;
@@ -542,13 +480,14 @@ function Rheirloomswap() {
 			case (((Rshouldtimefarm == true && game.global.challengeActive == "Archaeology") || ResourceToFarm === 'Science') && game.global.mapsActive == true && getPageSetting('RhsScienceStaff') != "undefined"):
 				EquipHeirloomByTypeAndSettingName('staff', 'RhsScienceStaff');
 				break;
-			case ((Rshouldtributefarm == true || Rshouldshipfarm == true || ResourceToFarm === 'Food') && game.global.mapsActive == true && getPageSetting('Rhstributestaff') != "undefined"):
+			case ((Rshouldtributefarm == true || Rshouldshipfarm == true || ResourceToFarm === 'Food' || (Rshouldtimefarm == true && autoTrimpSettings.Rtimefarmgather.value[getPageSetting('Rtimefarmzone').indexOf(game.global.world)] == "food"))
+				&& game.global.mapsActive == true && getPageSetting('Rhstributestaff') != "undefined"):
 				EquipHeirloomByTypeAndSettingName('staff', 'Rhstributestaff');
 				break;
-			case (ResourceToFarm === 'Wood' && game.global.mapsActive == true && getPageSetting('RhsWoodStaff') != "undefined"):
+			case ((ResourceToFarm === 'Wood' || (Rshouldtimefarm == true && autoTrimpSettings.Rtimefarmgather.value[getPageSetting('Rtimefarmzone').indexOf(game.global.world)] == "wood")) && game.global.mapsActive == true && getPageSetting('RhsWoodStaff') != "undefined"):
 				EquipHeirloomByTypeAndSettingName('staff', 'RhsWoodStaff');
 				break;
-			case (ResourceToFarm === 'Metal' && game.global.mapsActive == true && getPageSetting('RhsMetalStaff') != "undefined"):
+			case ((ResourceToFarm === 'Metal' || (Rshouldtimefarm == true && autoTrimpSettings.Rtimefarmgather.value[getPageSetting('Rtimefarmzone').indexOf(game.global.world)] == "food")) && game.global.mapsActive == true && getPageSetting('RhsMetalStaff') != "undefined"):
 				EquipHeirloomByTypeAndSettingName('staff', 'RhsMetalStaff');
 				break;
 			case (getPageSetting('Rhsmapstaff') != "undefined" && game.global.mapsActive == true):
